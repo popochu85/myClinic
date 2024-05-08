@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -111,9 +112,52 @@ namespace myClinic.Model
 
             return med;
         }
+        /// <summary>
+        /// 查詢藥物
+        /// </summary>
+        /// <param name="pairs"></param>
+        /// <returns></returns>
+        public List<Medicine> GetMedicines(Dictionary<string, string> pairs)
+        {
+
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
+            List<Medicine> meds = new List<Medicine>();
+            string query = "SELECT * from [myClinic].[dbo].[Medicine] ";
+            if (pairs.Count > 0)
+            {
+                query += " WHERE ";
+
+                // 遍歷字典中的鍵值對，將每個鍵值對組合成查詢條件
+                foreach (var pair in pairs)
+                {
+                    query += $"{pair.Key} like '%{pair.Value}%' AND ";
+                }
+
+                // 刪除最後一個 "AND "
+                query = query.Remove(query.Length - 5);
+            }
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            using (DataTable DT = sqlConnect.ExecuteDataTable(query))
+            {
+                foreach (DataRow row in DT.Rows)
+                {
+                    Medicine med = new Medicine
+                    {
+                        MedId = row["MedId"].ToString(),
+                        MedEf = row["MedEf"].ToString(),
+                        MedName = row["MedName"].ToString(),
+                        MedNotice = row["MedNotice"].ToString(),
+                        MedSe = row["MedSe"].ToString(),
+                    };
+                    meds.Add(med);
+                }
+            }
+
+            return meds;
+        }
 
         /// <summary>
-        /// 新增員工
+        /// 新增藥物
         /// </summary>
         /// <param name="emp">員工實體</param>
         /// <returns></returns>
@@ -121,13 +165,46 @@ namespace myClinic.Model
         {
             bool result = false; // 預設回傳
             SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
-
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
 
             // SQL 新增的語法 (EMP_M)
-            string query1 = $"INSERT INTO [caseHistoryId],[MedSN],[MedId],[MedDose],[empNo]) VALUES ('{med.MedId}', '{med.MedName}', '{med.MedEf}', '{med.MedSe},{med.MedNotice}')";
+            string query1 = $"INSERT INTO [myClinic].[dbo].[Medicine]( [MedId] ,[MedName],[MedEf] ,[MedSe] ,[MedNotice] ,[MedPic]) VALUES (@MedId, @MedName, @MedEf, @MedSe,@MedNotice,' ')";
+            sqlParameters.Add(new SqlParameter("@MedId", med.MedId));
+            sqlParameters.Add(new SqlParameter("@MedName", med.MedName));
+            sqlParameters.Add(new SqlParameter("@MedEf", med.MedEf));
+            sqlParameters.Add(new SqlParameter("@MedSe", med.MedSe));
+            sqlParameters.Add(new SqlParameter("@MedNotice", med.MedNotice));
 
             // 使用 SQLConnect 來執行查詢並且取得結果
-            if (sqlConnect.ExecuteQuery(query1) )
+            if (sqlConnect.ExecuteQuery(query1, sqlParameters) )
+            {
+                result = true;
+            }
+
+            return result;
+        }
+        /// <summary>
+        /// 修改藥物
+        /// </summary>
+        /// <param name="med"></param>
+        /// <returns></returns>
+
+        public bool updateMed(Medicine med)
+        {
+            bool result = false; // 預設回傳
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
+            List<SqlParameter> sqlParameters = new List<SqlParameter>();
+
+            // SQL 新增的語法 (EMP_M)
+            string query1 = $"update [myClinic].[dbo].[Medicine] set [MedId]=@MedId ,[MedName]=@MedName,[MedEf]=@MedEf ,[MedSe] =@MedSe,[MedNotice]=@MedNotice where MedId=@MedId" ;
+            sqlParameters.Add(new SqlParameter("@MedId", med.MedId));
+            sqlParameters.Add(new SqlParameter("@MedName", med.MedName));
+            sqlParameters.Add(new SqlParameter("@MedEf", med.MedEf));
+            sqlParameters.Add(new SqlParameter("@MedSe", med.MedSe));
+            sqlParameters.Add(new SqlParameter("@MedNotice", med.MedNotice));
+
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            if (sqlConnect.ExecuteQuery(query1, sqlParameters))
             {
                 result = true;
             }
@@ -135,29 +212,20 @@ namespace myClinic.Model
             return result;
         }
 
+        public bool deleteMed(Medicine med)
+        {
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
 
-        /// <summary>
-        /// 更新員工
-        /// </summary>
-        /// <param name="emp">員工實體</param>
-        /// <returns></returns>
-        //public bool updateMed(Medecine med)
-        //{
-        //    bool result = false;
-        //    SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
-        //    // 創建一個 Employee 物件來存儲查詢結果
-        //    Medecine med = null;
+            // SQL 新增的語法 (EMP_Detail)
+            string query = $"delete [myClinic].[dbo].[Medicine] where MedId=@MedId";
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@MedId", med.MedId));
+            bool sqlDelete = sqlConnect.ExecuteQuery(query, parameters);
 
-        //    // SQL 新增的語法 (EMP_M)
-        //    string query = "update Medecine where ";
-        //    // 使用 SQLConnect 來執行查詢並且取得結果
-        //    if (sqlConnect.ExecuteQuery(query) )
-        //    {
-        //        result = true;
-        //    }
+            return sqlDelete;
+        }
 
-        //    return result;
-        //}
+
         #endregion 
 
     }

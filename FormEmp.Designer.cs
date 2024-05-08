@@ -63,6 +63,8 @@
             this.btnBackOption = new System.Windows.Forms.Button();
             this.lblEmp = new System.Windows.Forms.Label();
             this.txtEmp = new System.Windows.Forms.TextBox();
+            this.btnClearTxt = new System.Windows.Forms.Button();
+            this.btnListAllEmp = new System.Windows.Forms.Button();
             this.groupBoxGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmp)).BeginInit();
             this.panelSave.SuspendLayout();
@@ -448,12 +450,40 @@
             this.txtEmp.Size = new System.Drawing.Size(207, 34);
             this.txtEmp.TabIndex = 90;
             // 
+            // btnClearTxt
+            // 
+            this.btnClearTxt.BackColor = System.Drawing.Color.Gray;
+            this.btnClearTxt.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnClearTxt.ForeColor = System.Drawing.Color.White;
+            this.btnClearTxt.Location = new System.Drawing.Point(319, 135);
+            this.btnClearTxt.Name = "btnClearTxt";
+            this.btnClearTxt.Size = new System.Drawing.Size(119, 39);
+            this.btnClearTxt.TabIndex = 91;
+            this.btnClearTxt.Text = "清空欄位";
+            this.btnClearTxt.UseVisualStyleBackColor = false;
+            this.btnClearTxt.Click += new System.EventHandler(this.btnClearTxt_Click);
+            // 
+            // btnListAllEmp
+            // 
+            this.btnListAllEmp.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnListAllEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnListAllEmp.ForeColor = System.Drawing.Color.Khaki;
+            this.btnListAllEmp.Location = new System.Drawing.Point(900, 64);
+            this.btnListAllEmp.Name = "btnListAllEmp";
+            this.btnListAllEmp.Size = new System.Drawing.Size(161, 39);
+            this.btnListAllEmp.TabIndex = 92;
+            this.btnListAllEmp.Text = "列出所有員工";
+            this.btnListAllEmp.UseVisualStyleBackColor = false;
+            this.btnListAllEmp.Click += new System.EventHandler(this.btnListAllEmp_Click);
+            // 
             // FormEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1073, 633);
+            this.Controls.Add(this.btnListAllEmp);
+            this.Controls.Add(this.btnClearTxt);
             this.Controls.Add(this.txtEmp);
             this.Controls.Add(this.lblEmp);
             this.Controls.Add(this.btnBackOption);
@@ -534,5 +564,7 @@
         private System.Windows.Forms.Button btnBackOption;
         private System.Windows.Forms.Label lblEmp;
         private System.Windows.Forms.TextBox txtEmp;
+        private System.Windows.Forms.Button btnClearTxt;
+        private System.Windows.Forms.Button btnListAllEmp;
     }
 }

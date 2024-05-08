@@ -61,7 +61,6 @@ namespace myClinic
                 txtPhone.Text= dataGridViewEmp.Rows[e.RowIndex].Cells["phone"].Value.ToString();
                 txtPosition.Text = dataGridViewEmp.Rows[e.RowIndex].Cells["position"].Value.ToString();
                 txtCreateDate.Text= dataGridViewEmp.Rows[e.RowIndex].Cells["createdDate"].Value.ToString();
-                int a = 0;
                 string g = dataGridViewEmp.Rows[e.RowIndex].Cells["groupId"].Value.ToString();
                 comboAuth.SelectedValue = g;
      
@@ -80,6 +79,10 @@ namespace myClinic
         {
             EmployeeController empController = new EmployeeController();
             renderDgv(empController.GetEmployees(txtEmpNo.Text, txtEmpName.Text));
+            if (dataGridViewEmp.RowCount == 0)
+            {
+                MessageBox.Show("查無此人!!");
+            }
         }
 
         private void FormEmp_Load(object sender, EventArgs e)
@@ -89,27 +92,6 @@ namespace myClinic
 
 
             checkStatus();
-            //dataGridViewEmp.Rows[0].Selected = true;
-            //txtEmpName.Text = dataGridViewEmp.Rows[0].Cells["empName"].Value.ToString();
-            //txtPwd.Text = dataGridViewEmp.Rows[0].Cells["pwd"].Value.ToString();
-            //txtEmpNo.Text = dataGridViewEmp.Rows[0].Cells["empNo"].Value.ToString();
-            //txtBirth.Text = dataGridViewEmp.Rows[0].Cells["birth"].Value.ToString();
-            //txtPhone.Text = dataGridViewEmp.Rows[0].Cells["phone"].Value.ToString();
-            //txtPosition.Text = dataGridViewEmp.Rows[0].Cells["position"].Value.ToString();
-            //txtCreateDate.Text = dataGridViewEmp.Rows[0].Cells["createdDate"].Value.ToString();
-            //int a = 0;
-            //string g = dataGridViewEmp.Rows[0].Cells["groupId"].Value.ToString();
-            //comboAuth.SelectedValue = g;
-
-            //if ((dataGridViewEmp.Rows[0].Cells["gender"].Value.ToString().Equals("B")))
-            //{
-            //    rabBoy.Checked = true;
-            //}
-            //else
-            //{
-            //    rabGirl.Checked = true;
-            //}
-            //txtAddress.Text = dataGridViewEmp.Rows[0].Cells["address"].Value.ToString();
         }
 
         private void searchAllEmp()
@@ -123,8 +105,14 @@ namespace myClinic
             employees = employeeController.GetEmployees();
             renderDgv(employees);
         }
+        /// <summary>
+        /// 搜尋後DGV呈現資料
+        /// </summary>
+        /// <param name="employees"></param>
         private void renderDgv(List<Employee> employees)
         {
+            // 清空DataGridView的資料
+            dataGridViewEmp.Rows.Clear();
             // 將員工資料加入到DataGridView
             foreach (Employee emp in employees)
             {
@@ -136,15 +124,7 @@ namespace myClinic
         {
             
             status = "Create";
-            txtAddress.Clear();
-            txtEmpNo.Clear();
-            txtEmpName.Clear();
-            txtPosition.Clear();
-            txtBirth.Value = new DateTime(1990, 1, 1);
-            txtPhone.Clear();
-            txtCreateDate.Value= DateTime.Now;
-            txtPwd.Clear();
-            comboAuth.SelectedIndex = 0;
+           ClearTxt();
 
 
             checkStatus();
@@ -160,7 +140,8 @@ namespace myClinic
             checkStatus();
         }
 
-        private void Save() {
+        private void Save()
+        {
 
             EmployeeController employeeController = new EmployeeController();
             Employee emp = getBindingEmp();
@@ -194,7 +175,6 @@ namespace myClinic
 
             status = "Default";
             checkStatus();
-            searchAllEmp();
         }
         /// <summary>
         /// 把畫面元件蒐集匯聚成新的Emp
@@ -271,6 +251,7 @@ namespace myClinic
                     txtAddress.Enabled = true;
                     rabBoy.Enabled = true;
                     rabGirl.Enabled = true;
+                    comboAuth.Enabled = true;
                     break;
                 case "Update":
                     txtEmpNo.ReadOnly = true;
@@ -283,6 +264,7 @@ namespace myClinic
                     txtAddress.Enabled = true;
                     rabBoy.Enabled = true;
                     rabGirl.Enabled = true;
+                    comboAuth.Enabled = true;
                     break;
                 case "Default":
                     txtEmpNo.ReadOnly = false;
@@ -295,31 +277,18 @@ namespace myClinic
                     txtAddress.Enabled = false;
                     rabBoy.Enabled = false;
                     rabGirl.Enabled = false;
+                    comboAuth.Enabled = false;
                     break;
             }
         }
-
-        
-    private bool checkNotNull()
-        {
-            
-            if ((txtEmpNo.Text != "")&&(txtEmpName.Text != ""))
-            {
-                return  true;
-            }
-            else
-            {
-                return false;
-            }
-
-        }
-        
-
 
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
+
+            ClearTxt();
+            searchAllEmp();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -352,9 +321,9 @@ namespace myClinic
                     // 使用者選擇了取消，不執行刪除動作
                     MessageBox.Show("取消刪除。");
                 }
-                bool isDelete = false;
 
                 searchAllEmp();
+                ClearTxt() ;
 
             }
         }
@@ -362,6 +331,30 @@ namespace myClinic
         private void btnBackOption_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void ClearTxt()
+        {
+            txtAddress.Clear();
+            txtEmpNo.Clear();
+            txtEmpName.Clear();
+            txtPosition.Clear();
+            txtBirth.Value = new DateTime(1990, 1, 1);
+            txtPhone.Clear();
+            txtCreateDate.Value = DateTime.Now;
+            txtPwd.Clear();
+            comboAuth.SelectedIndex = 0;
+        }
+
+        private void btnClearTxt_Click(object sender, EventArgs e)
+        {
+            ClearTxt();
+        }
+
+        private void btnListAllEmp_Click(object sender, EventArgs e)
+        {
+            ClearTxt();
+            dataGridViewEmp.Rows.Clear();
+            searchAllEmp();
         }
     }
 }

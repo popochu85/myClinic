@@ -53,17 +53,18 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
+            this.txtEmp = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            this.tabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabControl1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
@@ -325,6 +326,17 @@
             this.tabPage2.Text = "病人列表";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(23, 25);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.RowTemplate.Height = 31;
+            this.dataGridView1.Size = new System.Drawing.Size(273, 414);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // tabPage1
             // 
             this.tabPage1.ForeColor = System.Drawing.Color.DarkSlateGray;
@@ -341,22 +353,11 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.tabControl1.Location = new System.Drawing.Point(465, 35);
+            this.tabControl1.Location = new System.Drawing.Point(504, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(335, 509);
             this.tabControl1.TabIndex = 39;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(273, 414);
-            this.dataGridView1.TabIndex = 1;
             // 
             // textBox3
             // 
@@ -382,7 +383,7 @@
             this.button4.BackColor = System.Drawing.Color.DarkSlateGray;
             this.button4.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button4.ForeColor = System.Drawing.Color.Khaki;
-            this.button4.Location = new System.Drawing.Point(686, 546);
+            this.button4.Location = new System.Drawing.Point(725, 568);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(114, 39);
             this.button4.TabIndex = 44;
@@ -395,18 +396,28 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label12.Location = new System.Drawing.Point(33, 554);
+            this.label12.Location = new System.Drawing.Point(492, 18);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(134, 31);
             this.label12.TabIndex = 79;
             this.label12.Text = "操作人員：";
             // 
-            // Form1
+            // txtEmp
+            // 
+            this.txtEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEmp.Location = new System.Drawing.Point(632, 17);
+            this.txtEmp.Name = "txtEmp";
+            this.txtEmp.ReadOnly = true;
+            this.txtEmp.Size = new System.Drawing.Size(207, 34);
+            this.txtEmp.TabIndex = 92;
+            // 
+            // FormNurse
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
-            this.ClientSize = new System.Drawing.Size(841, 602);
+            this.ClientSize = new System.Drawing.Size(879, 633);
+            this.Controls.Add(this.txtEmp);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.textBox3);
@@ -437,13 +448,13 @@
             this.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.Margin = new System.Windows.Forms.Padding(5);
-            this.Name = "Form1";
+            this.Name = "FormNurse";
             this.Text = "掛號系統";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabControl1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -482,6 +493,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox txtEmp;
     }
 }
 

@@ -22,7 +22,8 @@ namespace myClinic.Controller
         /// 取得全部的權限群組
         /// </summary>
         /// <returns></returns>
-        public List<AuthGroup> GetAuthGroups() {
+        public List<AuthGroup> GetAuthGroups() 
+        {
             return auth.GetGroups();
         }
 

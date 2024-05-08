@@ -126,7 +126,7 @@ namespace myClinic.Model
                 // 遍歷字典中的鍵值對，將每個鍵值對組合成查詢條件
                 foreach (var pair in pairs)
                 {
-                    query += $"{pair.Key} = '{pair.Value}' AND ";
+                    query += $"{pair.Key} like '%{pair.Value}%' AND ";
                 }
 
                 // 刪除最後一個 "AND "

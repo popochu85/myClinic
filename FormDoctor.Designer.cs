@@ -63,6 +63,8 @@
             this.listView1 = new System.Windows.Forms.ListView();
             this.listBox3 = new System.Windows.Forms.ListBox();
             this.label20 = new System.Windows.Forms.Label();
+            this.txtEmp = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -226,7 +228,7 @@
             this.label12.BackColor = System.Drawing.Color.White;
             this.label12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label12.Location = new System.Drawing.Point(15, 567);
+            this.label12.Location = new System.Drawing.Point(12, 586);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(134, 31);
             this.label12.TabIndex = 55;
@@ -281,7 +283,7 @@
             this.label15.BackColor = System.Drawing.Color.White;
             this.label15.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label15.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label15.Location = new System.Drawing.Point(15, 617);
+            this.label15.Location = new System.Drawing.Point(12, 617);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(134, 31);
             this.label15.TabIndex = 61;
@@ -474,12 +476,32 @@
             this.label20.TabIndex = 87;
             this.label20.Text = "等待看診名單";
             // 
-            // Form2
+            // txtEmp
+            // 
+            this.txtEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEmp.Location = new System.Drawing.Point(147, 586);
+            this.txtEmp.Name = "txtEmp";
+            this.txtEmp.ReadOnly = true;
+            this.txtEmp.Size = new System.Drawing.Size(207, 34);
+            this.txtEmp.TabIndex = 91;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.textBox5.Location = new System.Drawing.Point(147, 618);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(207, 34);
+            this.textBox5.TabIndex = 92;
+            // 
+            // FormDoctor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(910, 655);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtEmp);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.listBox3);
             this.Controls.Add(this.listView1);
@@ -510,7 +532,7 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "Form2";
+            this.Name = "FormDoctor";
             this.Text = "看診系統";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -556,5 +578,7 @@
         private System.Windows.Forms.ListView listView1;
         private System.Windows.Forms.ListBox listBox3;
         private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox txtEmp;
+        private System.Windows.Forms.TextBox textBox5;
     }
 }
