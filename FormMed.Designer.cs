@@ -29,29 +29,33 @@
         private void InitializeComponent()
         {
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMedName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtMedId = new System.Windows.Forms.TextBox();
+            this.txtMedEf = new System.Windows.Forms.TextBox();
+            this.txtMedSe = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtMedNotice = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblEmp = new System.Windows.Forms.Label();
             this.dataGridViewMeds = new System.Windows.Forms.DataGridView();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeds)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label10
@@ -66,13 +70,13 @@
             this.label10.TabIndex = 55;
             this.label10.Text = "藥物維護";
             // 
-            // textBox1
+            // txtMedName
             // 
-            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(134, 148);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(168, 34);
-            this.textBox1.TabIndex = 56;
+            this.txtMedName.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMedName.Location = new System.Drawing.Point(134, 148);
+            this.txtMedName.Name = "txtMedName";
+            this.txtMedName.Size = new System.Drawing.Size(168, 34);
+            this.txtMedName.TabIndex = 56;
             // 
             // label5
             // 
@@ -129,36 +133,36 @@
             this.label3.TabIndex = 61;
             this.label3.Text = "藥物編號";
             // 
-            // textBox2
+            // txtMedId
             // 
-            this.textBox2.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(134, 107);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(168, 34);
-            this.textBox2.TabIndex = 62;
+            this.txtMedId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMedId.Location = new System.Drawing.Point(134, 107);
+            this.txtMedId.Name = "txtMedId";
+            this.txtMedId.Size = new System.Drawing.Size(168, 34);
+            this.txtMedId.TabIndex = 62;
             // 
-            // textBox3
+            // txtMedEf
             // 
-            this.textBox3.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(134, 188);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(207, 34);
-            this.textBox3.TabIndex = 63;
+            this.txtMedEf.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMedEf.Location = new System.Drawing.Point(134, 188);
+            this.txtMedEf.Name = "txtMedEf";
+            this.txtMedEf.Size = new System.Drawing.Size(207, 34);
+            this.txtMedEf.TabIndex = 63;
             // 
-            // textBox4
+            // txtMedSe
             // 
-            this.textBox4.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox4.Location = new System.Drawing.Point(134, 230);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(207, 34);
-            this.textBox4.TabIndex = 64;
+            this.txtMedSe.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMedSe.Location = new System.Drawing.Point(134, 230);
+            this.txtMedSe.Name = "txtMedSe";
+            this.txtMedSe.Size = new System.Drawing.Size(207, 34);
+            this.txtMedSe.TabIndex = 64;
             // 
             // button3
             // 
             this.button3.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button3.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(391, 397);
+            this.button3.Location = new System.Drawing.Point(90, 397);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(114, 39);
             this.button3.TabIndex = 66;
@@ -170,7 +174,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button1.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(134, 397);
+            this.button1.Location = new System.Drawing.Point(335, 397);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(114, 39);
             this.button1.TabIndex = 67;
@@ -182,22 +186,22 @@
             this.button2.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.button2.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(264, 397);
+            this.button2.Location = new System.Drawing.Point(210, 397);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(114, 39);
             this.button2.TabIndex = 68;
             this.button2.Text = "修改藥物";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // textBox6
+            // txtMedNotice
             // 
-            this.textBox6.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox6.Location = new System.Drawing.Point(134, 277);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox6.Size = new System.Drawing.Size(258, 114);
-            this.textBox6.TabIndex = 69;
+            this.txtMedNotice.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMedNotice.Location = new System.Drawing.Point(134, 277);
+            this.txtMedNotice.Multiline = true;
+            this.txtMedNotice.Name = "txtMedNotice";
+            this.txtMedNotice.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtMedNotice.Size = new System.Drawing.Size(258, 114);
+            this.txtMedNotice.TabIndex = 69;
             // 
             // button4
             // 
@@ -261,17 +265,17 @@
             this.label7.TabIndex = 77;
             this.label7.Text = "藥物圖片";
             // 
-            // label12
+            // lblEmp
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label12.Location = new System.Drawing.Point(12, 469);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(134, 31);
-            this.label12.TabIndex = 78;
-            this.label12.Text = "操作人員：";
+            this.lblEmp.AutoSize = true;
+            this.lblEmp.BackColor = System.Drawing.Color.White;
+            this.lblEmp.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblEmp.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lblEmp.Location = new System.Drawing.Point(12, 469);
+            this.lblEmp.Name = "lblEmp";
+            this.lblEmp.Size = new System.Drawing.Size(134, 31);
+            this.lblEmp.TabIndex = 78;
+            this.lblEmp.Text = "操作人員：";
             // 
             // dataGridViewMeds
             // 
@@ -283,33 +287,67 @@
             this.dataGridViewMeds.Size = new System.Drawing.Size(240, 318);
             this.dataGridViewMeds.TabIndex = 79;
             // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button6.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button6.ForeColor = System.Drawing.Color.White;
+            this.button6.Location = new System.Drawing.Point(0, 14);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(72, 39);
+            this.button6.TabIndex = 80;
+            this.button6.Text = "確認";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // button7
+            // 
+            this.button7.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.button7.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button7.ForeColor = System.Drawing.Color.White;
+            this.button7.Location = new System.Drawing.Point(83, 14);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(74, 39);
+            this.button7.TabIndex = 81;
+            this.button7.Text = "取消";
+            this.button7.UseVisualStyleBackColor = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button7);
+            this.panel1.Controls.Add(this.button6);
+            this.panel1.Location = new System.Drawing.Point(292, 442);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(157, 64);
+            this.panel1.TabIndex = 82;
+            // 
             // FormMed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(809, 518);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewMeds);
-            this.Controls.Add(this.label12);
+            this.Controls.Add(this.lblEmp);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.txtMedNotice);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMedSe);
+            this.Controls.Add(this.txtMedEf);
+            this.Controls.Add(this.txtMedId);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMedName);
             this.Controls.Add(this.label10);
             this.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -319,6 +357,7 @@
             this.Load += new System.EventHandler(this.FormMed_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeds)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,26 +366,29 @@
         #endregion
 
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMedName;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtMedId;
+        private System.Windows.Forms.TextBox txtMedEf;
+        private System.Windows.Forms.TextBox txtMedSe;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtMedNotice;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblEmp;
         private System.Windows.Forms.DataGridView dataGridViewMeds;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Panel panel1;
     }
 }

@@ -61,6 +61,27 @@ namespace myClinic.Controller
         {
             return employee.GetEmployees();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="empNo">員工編號</param>
+        /// <param name="empName">員工姓名</param>
+        /// <returns></returns>
+        public List<Employee> GetEmployees(string empNo, string empName)
+        {
+            Dictionary<string, string> pairs = new Dictionary<string, string>();
+            if (!empNo.Equals(""))
+            {
+                pairs.Add("empM.empNo", empNo);
+            }
+            if (!empName.Equals(""))
+            {
+                pairs.Add("empD.empName", empName);
+            }
+            return employee.GetEmployees(pairs);
+        }
+
         /// <summary>
         /// 新增員工
         /// </summary>
@@ -68,6 +89,7 @@ namespace myClinic.Controller
         /// <returns></returns>
         public string insertEmp(Employee emp)
         {
+
             string msg = "";
             try {
                 if (emp.empNo.Equals("")) {
@@ -78,32 +100,39 @@ namespace myClinic.Controller
                 {
                     return "員工姓名請勿為空!!";
                 }
-
+                if (emp.position.Equals(""))
+                {
+                    return "職位請勿為空!!";
+                }
+                if (emp.pwd.Equals(""))
+                {
+                    return "密碼請勿為空!!";
+                }
+                if (emp.birth.Equals(""))
+                {
+                    return "生日請勿為空!!";
+                }
+                if (emp.address.Equals(""))
+                {
+                    return "地址請勿為空!!";
+                }
+                if (emp.phone.Equals(""))
+                {
+                    return "電話請勿為空!!";
+                }
+                if (emp.createdDate.Equals(""))
+                {
+                    return "創建日期請勿為空!!";
+                }
+                if (emp.groupId.Equals(""))
+                {
+                    return "請選擇權限!!";
+                }
                 if (emp.gender.Equals(""))
                 {
-                    return "性別請勿為空!!";
+                    return "請選擇性別!!";
                 }
 
-                if (emp.gender.Equals(""))
-                {
-                    return "性別請勿為空!!";
-                }
-                if (emp.gender.Equals(""))
-                {
-                    return "性別請勿為空!!";
-                }
-                if (emp.gender.Equals(""))
-                {
-                    return "性別請勿為空!!";
-                }
-                if (emp.gender.Equals(""))
-                {
-                    return "性別請勿為空!!";
-                }
-                if (emp.gender.Equals(""))
-                {
-                    return "性別請勿為空!!";
-                }
 
                 employee.insertEmp(emp);
             }
@@ -114,14 +143,65 @@ namespace myClinic.Controller
             return msg;
         }
 
-        public bool updateEmp(Employee emp)
+        public string updateEmp(Employee emp)
         {
-            return emp.updateEmp(emp);// 修改成功
+
+            string msg = "";
+            try
+            {
+                if (emp.empNo.Equals(""))
+                {
+                    return "員工編號請勿為空!!";
+                }
+
+                if (emp.empName.Equals(""))
+                {
+                    return "員工姓名請勿為空!!";
+                }
+                if (emp.position.Equals(""))
+                {
+                    return "職位請勿為空!!";
+                }
+                if (emp.pwd.Equals(""))
+                {
+                    return "密碼請勿為空!!";
+                }
+                if (emp.birth.Equals(""))
+                {
+                    return "生日請勿為空!!";
+                }
+                if (emp.address.Equals(""))
+                {
+                    return "地址請勿為空!!";
+                }
+                if (emp.phone.Equals(""))
+                {
+                    return "電話請勿為空!!";
+                }
+                if (emp.createdDate.Equals(""))
+                {
+                    return "創建日期請勿為空!!";
+                }
+                if (emp.groupId.Equals(""))
+                {
+                    return "請選擇權限!!";
+                }
+                if (emp.gender.Equals(""))
+                {
+                    return "請選擇性別!!";
+                }
+                emp.updateEmp(emp);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            return msg;// 修改成功
         }
 
         public bool deleteEmp(Employee emp)
         {
-            return true;// 刪除成功
+            return emp.deleteEmp(emp);// 刪除成功
         }
     }
 

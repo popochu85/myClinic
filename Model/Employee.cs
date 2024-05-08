@@ -34,20 +34,6 @@ namespace myClinic.Model
         /// </summary>
         public string isActivate { get; set; }
 
-        //private string _gender;
-        //public string gender
-        //{
-        //    get
-        //    {
-        //        return (_gender.Equals("G")) ? "女" : "男";
-        //    }
-        //    set
-        //    {
-        //        _gender = value;
-
-        //    }
-        //}
-
         /// <summary>
         /// 性別
         /// </summary>
@@ -113,7 +99,50 @@ namespace myClinic.Model
                         pwd = row["pwd"].ToString(),
                         empName = row["empName"].ToString(),
                         groupId = row["groupId"].ToString(),
-                        isActivate = row["isActivate"].ToString(),
+                        gender = row["gender"].ToString(),
+                        birth = row["birth"].ToString(),
+                        address = row["address"].ToString(),
+                        phone = row["phone"].ToString(),
+                        createdDate = row["createdDate"].ToString(),
+                        position = row["position"].ToString()
+                    };
+                    employees.Add(employee);
+                }
+            }
+
+            return employees;
+        }
+
+        public List<Employee> GetEmployees(Dictionary<string, string> pairs) {
+
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
+            List<Employee> employees = new List<Employee>();
+            string query = "SELECT empM.*, empD.* FROM Employee as empM LEFT JOIN " +
+                " EmployeeDetail as empD ON empD.empNo = empM.empNo ";
+            if (pairs.Count > 0)
+            {
+                query += " WHERE ";
+
+                // 遍歷字典中的鍵值對，將每個鍵值對組合成查詢條件
+                foreach (var pair in pairs)
+                {
+                    query += $"{pair.Key} = '{pair.Value}' AND ";
+                }
+
+                // 刪除最後一個 "AND "
+                query = query.Remove(query.Length - 5);
+            }
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            using (DataTable DT = sqlConnect.ExecuteDataTable(query))
+            {
+                foreach (DataRow row in DT.Rows)
+                {
+                    Employee employee = new Employee
+                    {
+                        empNo = row["empNo"].ToString(),
+                        pwd = row["pwd"].ToString(),
+                        empName = row["empName"].ToString(),
+                        groupId = row["groupId"].ToString(),
                         gender = row["gender"].ToString(),
                         birth = row["birth"].ToString(),
                         address = row["address"].ToString(),
@@ -152,11 +181,11 @@ namespace myClinic.Model
                     DataRow row = dataTable.Rows[0];
                     employee = new Employee
                     {
+                       
                         empNo = row["empNo"].ToString(),
                         pwd = row["pwd"].ToString(),
                         empName = row["empName"].ToString(),
                         groupId = row["groupId"].ToString(),
-                        isActivate = row["isActivate"].ToString(),
                         gender = row["gender"].ToString(),
                         birth = row["birth"].ToString(),
                         address = row["address"].ToString(),
@@ -164,6 +193,7 @@ namespace myClinic.Model
                         createdDate = row["createdDate"].ToString(),
                         position = row["position"].ToString()
                     };
+                    
                 }
             }
 
@@ -183,13 +213,28 @@ namespace myClinic.Model
 
 
             // SQL 新增的語法 (EMP_M)
-            string query1 = $"INSERT INTO [myClinic].[dbo].[Employee] ([empNo], [pwd], [groupId], [isActivate]) VALUES ('{emp.empNo}', '{emp.pwd}', '{emp.groupId}')";
+            string query1 = $"INSERT INTO [myClinic].[dbo].[Employee] ([empNo], [pwd], [groupId],[isActivate]) VALUES (@empNo, @pwd, @groupId,'Y')";
+
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@empNo", emp.empNo));
+            parameters.Add(new SqlParameter("@pwd", emp.pwd));
+            parameters.Add(new SqlParameter("@groupId", emp.groupId));
+
+
 
             // SQL 新增的語法 (EMP_D)
-            string query2 = $"INSERT INTO [myClinic].[dbo].[EmployeeDetail] ([empNo], [position], [empName], [gender], [birth], [address], [phone], [createdDate]) VALUES ('{emp.empNo}', '{emp.position}', '{emp.empName}', '{emp.gender}', '{emp.birth}', '{emp.address}', '{emp.phone}', '{emp.createdDate}')";
-
+            string query2 = $"INSERT INTO [myClinic].[dbo].[EmployeeDetail] ([empNo], [position], [empName], [gender], [birth], [address], [phone], [createdDate]) VALUES (@empNo, @position, @empName,@gender, @birth, @address, @phone, @createdDate)";
+            List<SqlParameter> parameters2 = new List<SqlParameter>();
+            parameters2.Add(new SqlParameter("@empName", emp.empName));
+            parameters2.Add(new SqlParameter("@empNo", emp.empNo));
+            parameters2.Add(new SqlParameter("@position", emp.position));
+            parameters2.Add(new SqlParameter("@gender", emp.gender));
+            parameters2.Add(new SqlParameter("@birth", emp.birth));
+            parameters2.Add(new SqlParameter("@address", emp.address));
+            parameters2.Add(new SqlParameter("@phone", emp.phone));
+            parameters2.Add(new SqlParameter("@createdDate", emp.createdDate));
             // 使用 SQLConnect 來執行查詢並且取得結果
-            if (sqlConnect.ExecuteQuery(query1) && sqlConnect.ExecuteQuery(query2))
+            if (sqlConnect.ExecuteQuery(query1, parameters) && sqlConnect.ExecuteQuery(query2, parameters2))
             {
                 result = true;
             }
@@ -209,7 +254,6 @@ namespace myClinic.Model
             SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
             
 
-            // SQL 新增的語法 (EMP_Detail)
             string query =$"update EmployeeDetail set empName=@empName,empNo=@empNo,position=@position,gender=@gender,birth=@birth,address=@address,phone=@phone,createdDate=@createdDate where empNo=@empNo";
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("@empName", emp.empName));
@@ -220,18 +264,41 @@ namespace myClinic.Model
             parameters.Add(new SqlParameter("@address",emp.address));
             parameters.Add(new SqlParameter("@phone",emp.phone));
             parameters.Add(new SqlParameter("@createdDate", emp.createdDate));
-            // SQL 新增的語法 (EMP)
+
+            List<SqlParameter> parameters2 = new List<SqlParameter>();
             string query2 = "update Employee set pwd=@pwd,groupId=@groupId where empNo=@empNo";
-            parameters.Add(new SqlParameter("@pwd", emp.pwd));
-            parameters.Add(new SqlParameter("@groupId", emp.groupId));
+            parameters2.Add(new SqlParameter("@empNo", emp.empNo));
+            parameters2.Add(new SqlParameter("@pwd", emp.pwd));
+            parameters2.Add(new SqlParameter("@groupId", emp.groupId));
             // 使用 SQLConnect 來執行查詢並且取得結果
-            if (sqlConnect.ExecuteQuery(query, parameters)) //&& sqlConnect.ExecuteQuery(query2))
+            if (sqlConnect.ExecuteQuery(query, parameters)&& sqlConnect.ExecuteQuery(query2, parameters2))
             {
                 result = true;
             }
 
             return result;
         }
+
+        
+
+        public bool deleteEmp(Employee emp)
+        {
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
+
+            // SQL 新增的語法 (EMP_Detail)
+            string query = $"delete EmployeeDetail where empNo=@empNo";
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("@empNo", emp.empNo));
+            bool sqlDelete = sqlConnect.ExecuteQuery(query, parameters);
+
+            string query2 = "delete Employee where empNo=@empNo";
+            List<SqlParameter> parameters2 = new List<SqlParameter>();
+            parameters2.Add(new SqlParameter("@empNo", emp.empNo));
+            bool sqlDelete2 = sqlConnect.ExecuteQuery(query2, parameters2);
+
+            return sqlDelete && sqlDelete2;
+        }
+
         #endregion 
 
     }

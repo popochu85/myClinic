@@ -10,5 +10,6 @@ namespace myClinic.Model
     {
         public static string DatabaseConnectionString { get; set; }
         public static Employee employee { get; set; }
+       
     }
 }

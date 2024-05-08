@@ -45,7 +45,7 @@ namespace myClinic
             comboAuth.DisplayMember = "groupDesc"; 
 
             // 指定ComboBox的值屬性
-            comboAuth.ValueMember = "groupId"; 
+            comboAuth.ValueMember = "groupId";
         }
 
 
@@ -73,21 +73,43 @@ namespace myClinic
                     rabGirl.Checked = true;
                 }
                 txtAddress.Text = dataGridViewEmp.Rows[e.RowIndex].Cells["address"].Value.ToString() ;
-                //txtPosition.Text=
-                //txtPhone.Text=
-                //txtCreateDate.Text=
-
             }
         }
 
         private void btnSearchEmp_Click(object sender, EventArgs e)
         {
-            
+            EmployeeController empController = new EmployeeController();
+            renderDgv(empController.GetEmployees(txtEmpNo.Text, txtEmpName.Text));
         }
 
         private void FormEmp_Load(object sender, EventArgs e)
         {
             searchAllEmp();
+            txtEmp.Text = GlobalSettings.employee.empName;
+
+
+            checkStatus();
+            //dataGridViewEmp.Rows[0].Selected = true;
+            //txtEmpName.Text = dataGridViewEmp.Rows[0].Cells["empName"].Value.ToString();
+            //txtPwd.Text = dataGridViewEmp.Rows[0].Cells["pwd"].Value.ToString();
+            //txtEmpNo.Text = dataGridViewEmp.Rows[0].Cells["empNo"].Value.ToString();
+            //txtBirth.Text = dataGridViewEmp.Rows[0].Cells["birth"].Value.ToString();
+            //txtPhone.Text = dataGridViewEmp.Rows[0].Cells["phone"].Value.ToString();
+            //txtPosition.Text = dataGridViewEmp.Rows[0].Cells["position"].Value.ToString();
+            //txtCreateDate.Text = dataGridViewEmp.Rows[0].Cells["createdDate"].Value.ToString();
+            //int a = 0;
+            //string g = dataGridViewEmp.Rows[0].Cells["groupId"].Value.ToString();
+            //comboAuth.SelectedValue = g;
+
+            //if ((dataGridViewEmp.Rows[0].Cells["gender"].Value.ToString().Equals("B")))
+            //{
+            //    rabBoy.Checked = true;
+            //}
+            //else
+            //{
+            //    rabGirl.Checked = true;
+            //}
+            //txtAddress.Text = dataGridViewEmp.Rows[0].Cells["address"].Value.ToString();
         }
 
         private void searchAllEmp()
@@ -99,7 +121,10 @@ namespace myClinic
             EmployeeController employeeController = new EmployeeController();
             // 取得員工資料
             employees = employeeController.GetEmployees();
-
+            renderDgv(employees);
+        }
+        private void renderDgv(List<Employee> employees)
+        {
             // 將員工資料加入到DataGridView
             foreach (Employee emp in employees)
             {
@@ -109,7 +134,19 @@ namespace myClinic
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            
             status = "Create";
+            txtAddress.Clear();
+            txtEmpNo.Clear();
+            txtEmpName.Clear();
+            txtPosition.Clear();
+            txtBirth.Value = new DateTime(1990, 1, 1);
+            txtPhone.Clear();
+            txtCreateDate.Value= DateTime.Now;
+            txtPwd.Clear();
+            comboAuth.SelectedIndex = 0;
+
+
             checkStatus();
         }
 
@@ -126,27 +163,57 @@ namespace myClinic
         private void Save() {
 
             EmployeeController employeeController = new EmployeeController();
+            Employee emp = getBindingEmp();
             if (status.Equals("Create"))
             {
-                Employee emp = new Employee();
-                emp.empName = txtEmpName.Text;
-                emp.empNo = txtEmpNo.Text;
-                emp.groupId = comboAuth.SelectedValue.ToString();
-                employeeController.insertEmp(emp);
+                string result = employeeController.insertEmp(emp);
+                if (result.Equals(""))
+                {
+                    MessageBox.Show("新增成功");
+                }
+                else
+                {
+                    MessageBox.Show("新增失敗:"+result);
+                    return;
+                }
             }
             else if(status.Equals("Update"))
             {
-
-                Employee emp = new Employee();
-                emp.empName = txtEmpName.Text;
-                emp.empNo = txtEmpNo.Text;
-                employeeController.updateEmp(emp);
+                string result = employeeController.updateEmp(emp);
+                if (result.Equals(""))
+                {
+                    MessageBox.Show("更新成功");
+                }
+                else
+                {
+                    MessageBox.Show("更新失敗:" + result);
+                    return;
+                }
+                
             }
-
 
             status = "Default";
             checkStatus();
             searchAllEmp();
+        }
+        /// <summary>
+        /// 把畫面元件蒐集匯聚成新的Emp
+        /// </summary>
+        /// <returns></returns>
+        private Employee getBindingEmp() {
+
+            Employee emp = new Employee();
+            emp.empName = txtEmpName.Text;
+            emp.empNo = txtEmpNo.Text;
+            emp.groupId = (comboAuth.SelectedValue!=null)?comboAuth.SelectedValue.ToString():"";
+            emp.gender = (rabBoy.Checked) ? "B" : "G";
+            emp.phone = txtPhone.Text;
+            emp.pwd = txtPwd.Text;
+            emp.createdDate = txtCreateDate.Value.ToString("yyyy-MM-dd");
+            emp.birth = txtBirth.Value.ToString("yyyy-MM-dd");
+            emp.position = txtPosition.Text;
+            emp.address = txtAddress.Text;
+            return emp;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -196,32 +263,105 @@ namespace myClinic
                 case "Create":
                     txtEmpNo.ReadOnly = false;
                     txtCreateDate.Enabled = true;
+                    txtBirth.Enabled = true;
+                    txtCreateDate.Enabled = true;
+                    txtPhone.Enabled = true;
+                    txtPwd.Enabled = true;
+                    txtPosition.Enabled = true;
+                    txtAddress.Enabled = true;
+                    rabBoy.Enabled = true;
+                    rabGirl.Enabled = true;
                     break;
                 case "Update":
                     txtEmpNo.ReadOnly = true;
-                    txtCreateDate.Enabled = false;
+                    txtCreateDate.Enabled = true;
+                    txtBirth.Enabled = true;
+                    txtCreateDate.Enabled = true;
+                    txtPhone.Enabled = true;
+                    txtPwd.Enabled = true;
+                    txtPosition.Enabled = true;
+                    txtAddress.Enabled = true;
+                    rabBoy.Enabled = true;
+                    rabGirl.Enabled = true;
                     break;
                 case "Default":
                     txtEmpNo.ReadOnly = false;
-                    txtCreateDate.Enabled = true;
+                    txtEmpName.ReadOnly = false;
+                    txtBirth.Enabled = false;
+                    txtCreateDate.Enabled = false;
+                    txtPhone.Enabled = false;
+                    txtPwd.Enabled = false;
+                    txtPosition.Enabled = false;
+                    txtAddress.Enabled = false;
+                    rabBoy.Enabled = false;
+                    rabGirl.Enabled = false;
                     break;
             }
         }
 
+        
+    private bool checkNotNull()
+        {
+            
+            if ((txtEmpNo.Text != "")&&(txtEmpName.Text != ""))
+            {
+                return  true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+        
+
+
+
         private void btnSave_Click(object sender, EventArgs e)
         {
             Save();
-            checkStatus();
-            searchAllEmp();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            EmployeeController employeeController = new EmployeeController();
             if (txtEmpNo.Text.Equals(""))
             {
                 MessageBox.Show("請選擇一筆資料!");
                 return;
             }
+            else
+            {
+                Employee emp = getBindingEmp();
+                DialogResult result = MessageBox.Show("是否確定要刪除["+emp.empName+"]？", "刪除確認", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                // 根據使用者的選擇執行相應的動作
+                if (result == DialogResult.OK)
+                {
+                    if (employeeController.deleteEmp(emp))
+                    {
+                        MessageBox.Show("已刪除資料。");
+                    }
+                    else
+                    {
+                        MessageBox.Show("刪除失敗。");
+                    }
+                }
+                else
+                {
+                    // 使用者選擇了取消，不執行刪除動作
+                    MessageBox.Show("取消刪除。");
+                }
+                bool isDelete = false;
+
+                searchAllEmp();
+
+            }
+        }
+
+        private void btnBackOption_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -31,7 +31,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.txtCreateDate = new System.Windows.Forms.DateTimePicker();
             this.txtBirth = new System.Windows.Forms.DateTimePicker();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxGender = new System.Windows.Forms.GroupBox();
             this.rabGirl = new System.Windows.Forms.RadioButton();
             this.rabBoy = new System.Windows.Forms.RadioButton();
             this.txtPhone = new System.Windows.Forms.TextBox();
@@ -52,7 +52,6 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.btnSearchEmp = new System.Windows.Forms.Button();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.dataGridViewEmp = new System.Windows.Forms.DataGridView();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -61,7 +60,10 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.panelSave = new System.Windows.Forms.Panel();
-            this.groupBox1.SuspendLayout();
+            this.btnBackOption = new System.Windows.Forms.Button();
+            this.lblEmp = new System.Windows.Forms.Label();
+            this.txtEmp = new System.Windows.Forms.TextBox();
+            this.groupBoxGender.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmp)).BeginInit();
             this.panelSave.SuspendLayout();
             this.SuspendLayout();
@@ -94,15 +96,15 @@
             this.txtBirth.Size = new System.Drawing.Size(175, 34);
             this.txtBirth.TabIndex = 60;
             // 
-            // groupBox1
+            // groupBoxGender
             // 
-            this.groupBox1.Controls.Add(this.rabGirl);
-            this.groupBox1.Controls.Add(this.rabBoy);
-            this.groupBox1.Location = new System.Drawing.Point(134, 225);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(139, 43);
-            this.groupBox1.TabIndex = 59;
-            this.groupBox1.TabStop = false;
+            this.groupBoxGender.Controls.Add(this.rabGirl);
+            this.groupBoxGender.Controls.Add(this.rabBoy);
+            this.groupBoxGender.Location = new System.Drawing.Point(134, 225);
+            this.groupBoxGender.Name = "groupBoxGender";
+            this.groupBoxGender.Size = new System.Drawing.Size(139, 43);
+            this.groupBoxGender.TabIndex = 59;
+            this.groupBoxGender.TabStop = false;
             // 
             // rabGirl
             // 
@@ -232,7 +234,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.ForeColor = System.Drawing.Color.Red;
             this.label1.Location = new System.Drawing.Point(36, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 25);
@@ -251,7 +253,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label8.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label8.ForeColor = System.Drawing.Color.Red;
             this.label8.Location = new System.Drawing.Point(36, 140);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 25);
@@ -309,7 +311,7 @@
             this.btnSearchEmp.BackColor = System.Drawing.Color.Gray;
             this.btnSearchEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSearchEmp.ForeColor = System.Drawing.Color.White;
-            this.btnSearchEmp.Location = new System.Drawing.Point(720, 57);
+            this.btnSearchEmp.Location = new System.Drawing.Point(319, 88);
             this.btnSearchEmp.Name = "btnSearchEmp";
             this.btnSearchEmp.Size = new System.Drawing.Size(82, 39);
             this.btnSearchEmp.TabIndex = 81;
@@ -317,20 +319,12 @@
             this.btnSearchEmp.UseVisualStyleBackColor = false;
             this.btnSearchEmp.Click += new System.EventHandler(this.btnSearchEmp_Click);
             // 
-            // textBox8
-            // 
-            this.textBox8.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox8.Location = new System.Drawing.Point(543, 62);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(153, 34);
-            this.textBox8.TabIndex = 80;
-            // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.label13.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label13.Location = new System.Drawing.Point(529, 29);
+            this.label13.Location = new System.Drawing.Point(538, 71);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 25);
             this.label13.TabIndex = 79;
@@ -421,18 +415,53 @@
             this.panelSave.TabIndex = 87;
             this.panelSave.Visible = false;
             // 
+            // btnBackOption
+            // 
+            this.btnBackOption.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnBackOption.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnBackOption.ForeColor = System.Drawing.Color.Khaki;
+            this.btnBackOption.Location = new System.Drawing.Point(947, 565);
+            this.btnBackOption.Name = "btnBackOption";
+            this.btnBackOption.Size = new System.Drawing.Size(114, 39);
+            this.btnBackOption.TabIndex = 88;
+            this.btnBackOption.Text = "返回選單";
+            this.btnBackOption.UseVisualStyleBackColor = false;
+            this.btnBackOption.Click += new System.EventHandler(this.btnBackOption_Click);
+            // 
+            // lblEmp
+            // 
+            this.lblEmp.BackColor = System.Drawing.Color.White;
+            this.lblEmp.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblEmp.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lblEmp.Location = new System.Drawing.Point(714, 9);
+            this.lblEmp.Name = "lblEmp";
+            this.lblEmp.Size = new System.Drawing.Size(134, 31);
+            this.lblEmp.TabIndex = 89;
+            this.lblEmp.Text = "操作人員：";
+            // 
+            // txtEmp
+            // 
+            this.txtEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtEmp.Location = new System.Drawing.Point(854, 9);
+            this.txtEmp.Name = "txtEmp";
+            this.txtEmp.ReadOnly = true;
+            this.txtEmp.Size = new System.Drawing.Size(207, 34);
+            this.txtEmp.TabIndex = 90;
+            // 
             // FormEmp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1073, 633);
+            this.Controls.Add(this.txtEmp);
+            this.Controls.Add(this.lblEmp);
+            this.Controls.Add(this.btnBackOption);
             this.Controls.Add(this.panelSave);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.comboAuth);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSearchEmp);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.dataGridViewEmp);
             this.Controls.Add(this.btnUpdate);
@@ -443,7 +472,7 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.txtCreateDate);
             this.Controls.Add(this.txtBirth);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxGender);
             this.Controls.Add(this.txtPhone);
             this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.txtPosition);
@@ -459,8 +488,8 @@
             this.Name = "FormEmp";
             this.Text = "員工維護系統";
             this.Load += new System.EventHandler(this.FormEmp_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxGender.ResumeLayout(false);
+            this.groupBoxGender.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmp)).EndInit();
             this.panelSave.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -473,7 +502,7 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.DateTimePicker txtCreateDate;
         private System.Windows.Forms.DateTimePicker txtBirth;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxGender;
         private System.Windows.Forms.RadioButton rabGirl;
         private System.Windows.Forms.RadioButton rabBoy;
         private System.Windows.Forms.TextBox txtPhone;
@@ -494,7 +523,6 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Button btnCreate;
         private System.Windows.Forms.Button btnSearchEmp;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridViewEmp;
         private System.Windows.Forms.Button btnDelete;
@@ -503,5 +531,8 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Panel panelSave;
+        private System.Windows.Forms.Button btnBackOption;
+        private System.Windows.Forms.Label lblEmp;
+        private System.Windows.Forms.TextBox txtEmp;
     }
 }

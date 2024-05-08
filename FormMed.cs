@@ -55,7 +55,10 @@ namespace myClinic
 
         private void FormMed_Load(object sender, EventArgs e)
         {
+            Employee employee = new Employee();
             searchAllMeds();
+            string emp = employee.empName;
+            lblEmp.Text = $"操作人員：{emp}";
         }
     }
 }
