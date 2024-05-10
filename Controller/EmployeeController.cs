@@ -60,6 +60,7 @@ namespace myClinic.Controller
         /// <returns></returns>
         public List<Employee> GetEmployees()
         {
+            
             return employee.GetEmployees();
         }
 

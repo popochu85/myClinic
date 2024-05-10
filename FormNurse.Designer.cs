@@ -51,20 +51,22 @@
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btn修改資料 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvPatient = new System.Windows.Forms.DataGridView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtEmp = new System.Windows.Forms.TextBox();
+            this.btnBackToOption = new System.Windows.Forms.Button();
+            this.lblEmp = new System.Windows.Forms.Label();
+            this.dgvRes = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
+            this.tabPage1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -258,6 +260,7 @@
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(175, 34);
             this.dateTimePicker1.TabIndex = 35;
+            this.dateTimePicker1.Value = new System.DateTime(1990, 1, 1, 10, 18, 0, 0);
             // 
             // dateTimePicker2
             // 
@@ -302,21 +305,21 @@
             this.button2.Text = "掛號";
             this.button2.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btn修改資料
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button3.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button3.ForeColor = System.Drawing.Color.Khaki;
-            this.button3.Location = new System.Drawing.Point(336, 440);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(114, 39);
-            this.button3.TabIndex = 41;
-            this.button3.Text = "修改資料";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btn修改資料.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btn修改資料.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btn修改資料.ForeColor = System.Drawing.Color.Khaki;
+            this.btn修改資料.Location = new System.Drawing.Point(336, 440);
+            this.btn修改資料.Name = "btn修改資料";
+            this.btn修改資料.Size = new System.Drawing.Size(114, 39);
+            this.btn修改資料.TabIndex = 41;
+            this.btn修改資料.Text = "修改資料";
+            this.btn修改資料.UseVisualStyleBackColor = false;
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dgvPatient);
             this.tabPage2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.tabPage2.Location = new System.Drawing.Point(4, 40);
             this.tabPage2.Name = "tabPage2";
@@ -326,19 +329,20 @@
             this.tabPage2.Text = "病人列表";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgvPatient
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(273, 414);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvPatient.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvPatient.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPatient.Location = new System.Drawing.Point(23, 25);
+            this.dgvPatient.Name = "dgvPatient";
+            this.dgvPatient.RowHeadersWidth = 62;
+            this.dgvPatient.RowTemplate.Height = 31;
+            this.dgvPatient.Size = new System.Drawing.Size(273, 414);
+            this.dgvPatient.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.dgvRes);
             this.tabPage1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.tabPage1.Location = new System.Drawing.Point(4, 40);
             this.tabPage1.Name = "tabPage1";
@@ -378,38 +382,41 @@
             this.label11.TabIndex = 42;
             this.label11.Text = "備註";
             // 
-            // button4
+            // btnBackToOption
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.button4.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button4.ForeColor = System.Drawing.Color.Khaki;
-            this.button4.Location = new System.Drawing.Point(725, 568);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(114, 39);
-            this.button4.TabIndex = 44;
-            this.button4.Text = "返回選單";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnBackToOption.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnBackToOption.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnBackToOption.ForeColor = System.Drawing.Color.Khaki;
+            this.btnBackToOption.Location = new System.Drawing.Point(725, 568);
+            this.btnBackToOption.Name = "btnBackToOption";
+            this.btnBackToOption.Size = new System.Drawing.Size(114, 39);
+            this.btnBackToOption.TabIndex = 44;
+            this.btnBackToOption.Text = "返回選單";
+            this.btnBackToOption.UseVisualStyleBackColor = false;
+            this.btnBackToOption.Click += new System.EventHandler(this.btnBackToOption_Click);
             // 
-            // label12
+            // lblEmp
             // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.White;
-            this.label12.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label12.Location = new System.Drawing.Point(492, 18);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(134, 31);
-            this.label12.TabIndex = 79;
-            this.label12.Text = "操作人員：";
+            this.lblEmp.AutoSize = true;
+            this.lblEmp.BackColor = System.Drawing.Color.White;
+            this.lblEmp.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblEmp.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.lblEmp.Location = new System.Drawing.Point(492, 18);
+            this.lblEmp.Name = "lblEmp";
+            this.lblEmp.Size = new System.Drawing.Size(134, 31);
+            this.lblEmp.TabIndex = 79;
+            this.lblEmp.Text = "操作人員：";
             // 
-            // txtEmp
+            // dgvRes
             // 
-            this.txtEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEmp.Location = new System.Drawing.Point(632, 17);
-            this.txtEmp.Name = "txtEmp";
-            this.txtEmp.ReadOnly = true;
-            this.txtEmp.Size = new System.Drawing.Size(207, 34);
-            this.txtEmp.TabIndex = 92;
+            this.dgvRes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvRes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRes.Location = new System.Drawing.Point(27, 25);
+            this.dgvRes.Name = "dgvRes";
+            this.dgvRes.RowHeadersWidth = 62;
+            this.dgvRes.RowTemplate.Height = 31;
+            this.dgvRes.Size = new System.Drawing.Size(273, 414);
+            this.dgvRes.TabIndex = 2;
             // 
             // FormNurse
             // 
@@ -417,12 +424,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightYellow;
             this.ClientSize = new System.Drawing.Size(879, 633);
-            this.Controls.Add(this.txtEmp);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.lblEmp);
+            this.Controls.Add(this.btnBackToOption);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btn修改資料);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.button1);
@@ -453,8 +459,10 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).EndInit();
+            this.tabPage1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,16 +492,16 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btn修改資料;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvPatient;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtEmp;
+        private System.Windows.Forms.Button btnBackToOption;
+        private System.Windows.Forms.Label lblEmp;
+        private System.Windows.Forms.DataGridView dgvRes;
     }
 }
 

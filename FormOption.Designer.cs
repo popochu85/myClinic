@@ -34,7 +34,6 @@
             this.btnMed = new System.Windows.Forms.Button();
             this.btnEmp = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.txtEmp = new System.Windows.Forms.TextBox();
             this.lblEmp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -115,15 +114,6 @@
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // txtEmp
-            // 
-            this.txtEmp.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtEmp.Location = new System.Drawing.Point(160, 508);
-            this.txtEmp.Name = "txtEmp";
-            this.txtEmp.ReadOnly = true;
-            this.txtEmp.Size = new System.Drawing.Size(207, 34);
-            this.txtEmp.TabIndex = 92;
-            // 
             // lblEmp
             // 
             this.lblEmp.AutoSize = true;
@@ -143,7 +133,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(394, 551);
             this.Controls.Add(this.lblEmp);
-            this.Controls.Add(this.txtEmp);
             this.Controls.Add(this.btnLogout);
             this.Controls.Add(this.btnEmp);
             this.Controls.Add(this.btnMed);
@@ -167,7 +156,6 @@
         private System.Windows.Forms.Button btnMed;
         private System.Windows.Forms.Button btnEmp;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.TextBox txtEmp;
         private System.Windows.Forms.Label lblEmp;
     }
 }

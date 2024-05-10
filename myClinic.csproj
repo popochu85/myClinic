@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
+    <Compile Include="Controller\PatientController.cs" />
     <Compile Include="FormNurse.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -49,7 +49,11 @@ namespace myClinic
         }
 
 
-
+        /// <summary>
+        /// 將select DGV INDEX放入txt中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewEmp_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)

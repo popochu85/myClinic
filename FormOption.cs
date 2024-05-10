@@ -20,6 +20,7 @@ namespace myClinic
 
         private void FormOption_Load(object sender, EventArgs e)
         {
+            lblEmp.Text = $"操作人員：{GlobalSettings.employee.empName}";
         }
 
 
