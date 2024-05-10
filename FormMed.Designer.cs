@@ -77,7 +77,7 @@
             this.txtMedName.Location = new System.Drawing.Point(134, 148);
             this.txtMedName.Name = "txtMedName";
             this.txtMedName.Size = new System.Drawing.Size(168, 34);
-            this.txtMedName.TabIndex = 56;
+            this.txtMedName.TabIndex = 2;
             // 
             // label5
             // 
@@ -140,7 +140,7 @@
             this.txtMedId.Location = new System.Drawing.Point(134, 107);
             this.txtMedId.Name = "txtMedId";
             this.txtMedId.Size = new System.Drawing.Size(168, 34);
-            this.txtMedId.TabIndex = 62;
+            this.txtMedId.TabIndex = 1;
             // 
             // txtMedEf
             // 
@@ -148,7 +148,7 @@
             this.txtMedEf.Location = new System.Drawing.Point(134, 188);
             this.txtMedEf.Name = "txtMedEf";
             this.txtMedEf.Size = new System.Drawing.Size(207, 34);
-            this.txtMedEf.TabIndex = 63;
+            this.txtMedEf.TabIndex = 3;
             // 
             // txtMedSe
             // 
@@ -156,7 +156,7 @@
             this.txtMedSe.Location = new System.Drawing.Point(134, 230);
             this.txtMedSe.Name = "txtMedSe";
             this.txtMedSe.Size = new System.Drawing.Size(207, 34);
-            this.txtMedSe.TabIndex = 64;
+            this.txtMedSe.TabIndex = 4;
             // 
             // btnCreate
             // 
@@ -205,7 +205,7 @@
             this.txtMedNotice.Name = "txtMedNotice";
             this.txtMedNotice.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtMedNotice.Size = new System.Drawing.Size(258, 114);
-            this.txtMedNotice.TabIndex = 69;
+            this.txtMedNotice.TabIndex = 5;
             // 
             // btnBackOption
             // 

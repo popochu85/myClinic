@@ -50,10 +50,18 @@ namespace myClinic.Model
         /// 初診日期
         /// </summary>
         public string createdDate { get; set; }
-
-
-
-
+        /// <summary>
+        /// 備註
+        /// </summary>
+        public string patientOther { get; set; }
+        /// <summary>
+        /// 掛號順序
+        /// </summary>
+        public string regId { get; set; }
+        /// <summary>
+        /// 病歷存檔檔案號碼
+        /// </summary>
+        public string caseHistoryId { get; set; }
         #endregion
 
 
@@ -98,7 +106,8 @@ namespace myClinic.Model
                         patientAddress = row["patientAddress"].ToString(),
                         allergy = row["allergy"].ToString(),
                         disease = row["disease"].ToString(),
-                        createdDate = row["createdDate"].ToString(),
+                        patientOther = row["patientOther"].ToString(),
+                        createdDate = row["createdDate"].ToString()
                     };
                     patients.Add(patient);
                 }
@@ -106,12 +115,12 @@ namespace myClinic.Model
 
             return patients;
         }
-        
+
         public bool insertPat(Patient pat)
         {
             bool result = false;
             SQLConnectMaster sqlConnect = new SQLConnectMaster();
-            string query = "insert into [myClinic].[dbo].[Patients] ([patientId],[patientName],[gender],[patientBirth],[allergy],[disease],[patientAddress],[patientPhone] ,[createdDate]) values(@patientId,@patientName,@gender,@patientBirth,@allergy,@disease,@patientAddress,@patientPhone,@createdDate)";
+            string query = "insert into [myClinic].[dbo].[Patients] ([patientId],[patientName],[gender],[patientBirth],[allergy],[disease],[patientAddress],[patientPhone],[patientOther] ,[createdDate]) values(@patientId,@patientName,@gender,@patientBirth,@allergy,@disease,@patientAddress,@patientPhone,@patientOther,@createdDate)";
             List<SqlParameter> parameters = new List<SqlParameter>();
             parameters.Add(new SqlParameter("patientId", pat.patientId));
             parameters.Add(new SqlParameter("patientName", pat.patientName));
@@ -121,16 +130,93 @@ namespace myClinic.Model
             parameters.Add(new SqlParameter("disease", pat.disease));
             parameters.Add(new SqlParameter("patientAddress", pat.patientAddress));
             parameters.Add(new SqlParameter("patientPhone", pat.patientPhone));
+            parameters.Add(new SqlParameter("patientOther", pat.patientOther));
             parameters.Add(new SqlParameter("createdDate", pat.createdDate));
-            if(sqlConnect.ExecuteQuery(query, parameters))
+            if (sqlConnect.ExecuteQuery(query, parameters))
             {
                 result = true;
             }
 
             return result;
         }
+        public bool updatePat(Patient pat)
+        {
+            bool result = false;
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();
+            string query = "update [myClinic].[dbo].[Patients] set patientId=@patientId,patientName=@patientName,gender=@gender,patientBirth=@patientBirth,allergy=@allergy,disease=@disease,patientAddress=@patientAddress,patientPhone=@patientPhone,patientOther=@patientOther,createdDate=@createdDate where patientId=@patientId";
+            List<SqlParameter> parameters = new List<SqlParameter>();
+            parameters.Add(new SqlParameter("patientId", pat.patientId));
+            parameters.Add(new SqlParameter("patientName", pat.patientName));
+            parameters.Add(new SqlParameter("gender", pat.gender));
+            parameters.Add(new SqlParameter("patientBirth", pat.patientBirth));
+            parameters.Add(new SqlParameter("allergy", pat.allergy));
+            parameters.Add(new SqlParameter("disease", pat.disease));
+            parameters.Add(new SqlParameter("patientAddress", pat.patientAddress));
+            parameters.Add(new SqlParameter("patientPhone", pat.patientPhone));
+            parameters.Add(new SqlParameter("patientOther", pat.patientOther));
+            parameters.Add(new SqlParameter("createdDate", pat.createdDate));
+            if (sqlConnect.ExecuteQuery(query, parameters))
+            {
+                result = true;
+            }
 
-        
+            return result;
+        }
+        /// <summary>
+        /// 搜尋病人
+        /// </summary>
+        /// <param name="pairs"></param>
+        /// <returns></returns>
+        public List<Patient> GetPatients(Dictionary<string, string> pairs)
+        {
+
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
+            List<Patient> patients = new List<Patient>();
+            string query = "SELECT * FROM Patients ";
+            if (pairs.Count > 0)
+            {
+                query += " WHERE ";
+
+                // 遍歷字典中的鍵值對，將每個鍵值對組合成查詢條件
+                foreach (var pair in pairs)
+                {
+                    query += $"{pair.Key} like '%{pair.Value}%' AND ";
+                }
+
+                // 刪除最後一個 "AND "
+                query = query.Remove(query.Length - 5);
+            }
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            using (DataTable DT = sqlConnect.ExecuteDataTable(query))
+            {
+                foreach (DataRow row in DT.Rows)
+                {
+                    Patient patient = new Patient
+                    {
+                        patientId = row["patientId"].ToString(),
+                        patientBirth = row["patientBirth"].ToString(),
+                        gender = row["gender"].ToString(),
+                        patientName = row["patientName"].ToString(),
+                        patientPhone = row["patientPhone"].ToString(),
+                        patientAddress = row["patientAddress"].ToString(),
+                        allergy = row["allergy"].ToString(),
+                        disease = row["disease"].ToString(),
+                        patientOther = row["patientOther"].ToString(),
+                        createdDate = row["createdDate"].ToString()
+                    };
+                    patients.Add(patient);
+                }
+            }
+
+            return patients;
+        } 
+
+        public bool regPat(Patient pat)
+        {
+            bool result = false;
+            return result;
+        }
+
         #endregion
     }
 }

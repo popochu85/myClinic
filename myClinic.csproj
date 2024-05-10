@@ -86,6 +86,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\AuthGroup.cs" />
+    <Compile Include="Model\CaseHistory.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\GlobalSettings.cs" />
     <Compile Include="Model\Medicine.cs" />

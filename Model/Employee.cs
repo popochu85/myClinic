@@ -112,7 +112,11 @@ namespace myClinic.Model
 
             return employees;
         }
-
+        /// <summary>
+        /// 搜尋員工(關鍵字)
+        /// </summary>
+        /// <param name="pairs"></param>
+        /// <returns></returns>
         public List<Employee> GetEmployees(Dictionary<string, string> pairs) {
 
             SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串

@@ -88,7 +88,7 @@
             this.txtCreateDate.Location = new System.Drawing.Point(135, 414);
             this.txtCreateDate.Name = "txtCreateDate";
             this.txtCreateDate.Size = new System.Drawing.Size(175, 34);
-            this.txtCreateDate.TabIndex = 61;
+            this.txtCreateDate.TabIndex = 9;
             // 
             // txtBirth
             // 
@@ -96,7 +96,7 @@
             this.txtBirth.Location = new System.Drawing.Point(134, 279);
             this.txtBirth.Name = "txtBirth";
             this.txtBirth.Size = new System.Drawing.Size(175, 34);
-            this.txtBirth.TabIndex = 60;
+            this.txtBirth.TabIndex = 6;
             // 
             // groupBoxGender
             // 
@@ -116,7 +116,7 @@
             this.rabGirl.Location = new System.Drawing.Point(76, 15);
             this.rabGirl.Name = "rabGirl";
             this.rabGirl.Size = new System.Drawing.Size(57, 29);
-            this.rabGirl.TabIndex = 33;
+            this.rabGirl.TabIndex = 5;
             this.rabGirl.Text = "女";
             this.rabGirl.UseVisualStyleBackColor = true;
             // 
@@ -129,7 +129,7 @@
             this.rabBoy.Location = new System.Drawing.Point(6, 15);
             this.rabBoy.Name = "rabBoy";
             this.rabBoy.Size = new System.Drawing.Size(57, 29);
-            this.rabBoy.TabIndex = 32;
+            this.rabBoy.TabIndex = 4;
             this.rabBoy.TabStop = true;
             this.rabBoy.Text = "男";
             this.rabBoy.UseVisualStyleBackColor = true;
@@ -140,7 +140,7 @@
             this.txtPhone.Location = new System.Drawing.Point(134, 369);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(168, 34);
-            this.txtPhone.TabIndex = 58;
+            this.txtPhone.TabIndex = 8;
             // 
             // txtAddress
             // 
@@ -148,7 +148,7 @@
             this.txtAddress.Location = new System.Drawing.Point(134, 324);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(304, 34);
-            this.txtAddress.TabIndex = 57;
+            this.txtAddress.TabIndex = 7;
             // 
             // txtPosition
             // 
@@ -156,7 +156,7 @@
             this.txtPosition.Location = new System.Drawing.Point(134, 180);
             this.txtPosition.Name = "txtPosition";
             this.txtPosition.Size = new System.Drawing.Size(168, 34);
-            this.txtPosition.TabIndex = 54;
+            this.txtPosition.TabIndex = 3;
             // 
             // txtEmpNo
             // 
@@ -164,7 +164,7 @@
             this.txtEmpNo.Location = new System.Drawing.Point(134, 90);
             this.txtEmpNo.Name = "txtEmpNo";
             this.txtEmpNo.Size = new System.Drawing.Size(168, 34);
-            this.txtEmpNo.TabIndex = 53;
+            this.txtEmpNo.TabIndex = 1;
             // 
             // label10
             // 
@@ -249,7 +249,7 @@
             this.txtEmpName.Location = new System.Drawing.Point(134, 135);
             this.txtEmpName.Name = "txtEmpName";
             this.txtEmpName.Size = new System.Drawing.Size(168, 34);
-            this.txtEmpName.TabIndex = 65;
+            this.txtEmpName.TabIndex = 2;
             // 
             // label8
             // 
@@ -269,7 +269,7 @@
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.PasswordChar = '*';
             this.txtPwd.Size = new System.Drawing.Size(168, 34);
-            this.txtPwd.TabIndex = 67;
+            this.txtPwd.TabIndex = 10;
             // 
             // label9
             // 
@@ -368,7 +368,7 @@
             this.comboAuth.Location = new System.Drawing.Point(135, 509);
             this.comboAuth.Name = "comboAuth";
             this.comboAuth.Size = new System.Drawing.Size(210, 33);
-            this.comboAuth.TabIndex = 83;
+            this.comboAuth.TabIndex = 11;
             // 
             // label11
             // 

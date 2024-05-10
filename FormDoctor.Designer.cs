@@ -60,15 +60,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
             this.dgvRes = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dgvMedsOfPat = new System.Windows.Forms.DataGridView();
+            this.dgvMed = new System.Windows.Forms.DataGridView();
+            this.dgvPastHx = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedsOfPat)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPastHx)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -441,6 +441,7 @@
             // 
             // dgvRes
             // 
+            this.dgvRes.AllowUserToAddRows = false;
             this.dgvRes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
             this.dgvRes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRes.Location = new System.Drawing.Point(704, 43);
@@ -450,38 +451,41 @@
             this.dgvRes.Size = new System.Drawing.Size(203, 202);
             this.dgvRes.TabIndex = 93;
             // 
-            // dataGridView1
+            // dgvMedsOfPat
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(619, 329);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 31;
-            this.dataGridView1.Size = new System.Drawing.Size(203, 235);
-            this.dataGridView1.TabIndex = 94;
+            this.dgvMedsOfPat.AllowUserToAddRows = false;
+            this.dgvMedsOfPat.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvMedsOfPat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMedsOfPat.Location = new System.Drawing.Point(619, 329);
+            this.dgvMedsOfPat.Name = "dgvMedsOfPat";
+            this.dgvMedsOfPat.RowHeadersWidth = 62;
+            this.dgvMedsOfPat.RowTemplate.Height = 31;
+            this.dgvMedsOfPat.Size = new System.Drawing.Size(203, 235);
+            this.dgvMedsOfPat.TabIndex = 94;
             // 
-            // dataGridView2
+            // dgvMed
             // 
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(303, 342);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 31;
-            this.dataGridView2.Size = new System.Drawing.Size(190, 195);
-            this.dataGridView2.TabIndex = 95;
+            this.dgvMed.AllowUserToAddRows = false;
+            this.dgvMed.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMed.Location = new System.Drawing.Point(303, 342);
+            this.dgvMed.Name = "dgvMed";
+            this.dgvMed.RowHeadersWidth = 62;
+            this.dgvMed.RowTemplate.Height = 31;
+            this.dgvMed.Size = new System.Drawing.Size(190, 195);
+            this.dgvMed.TabIndex = 95;
             // 
-            // dataGridView3
+            // dgvPastHx
             // 
-            this.dataGridView3.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(33, 369);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.RowTemplate.Height = 31;
-            this.dataGridView3.Size = new System.Drawing.Size(199, 195);
-            this.dataGridView3.TabIndex = 96;
+            this.dgvPastHx.AllowUserToAddRows = false;
+            this.dgvPastHx.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvPastHx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPastHx.Location = new System.Drawing.Point(33, 369);
+            this.dgvPastHx.Name = "dgvPastHx";
+            this.dgvPastHx.RowHeadersWidth = 62;
+            this.dgvPastHx.RowTemplate.Height = 31;
+            this.dgvPastHx.Size = new System.Drawing.Size(199, 195);
+            this.dgvPastHx.TabIndex = 96;
             // 
             // FormDoctor
             // 
@@ -489,9 +493,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(910, 655);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvPastHx);
+            this.Controls.Add(this.dgvMed);
+            this.Controls.Add(this.dgvMedsOfPat);
             this.Controls.Add(this.dgvRes);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.comboBox1);
@@ -521,13 +525,14 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormDoctor";
             this.Text = "看診系統";
+            this.Load += new System.EventHandler(this.FormDoctor_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMedsOfPat)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPastHx)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -539,7 +544,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label2;
@@ -566,8 +570,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.DataGridView dgvRes;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dgvMedsOfPat;
+        private System.Windows.Forms.DataGridView dgvMed;
+        private System.Windows.Forms.DataGridView dgvPastHx;
+        private System.Windows.Forms.Label label11;
     }
 }

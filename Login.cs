@@ -73,7 +73,7 @@ namespace myClinic
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            AcceptButton = btnLogin;
         }
     }
 }

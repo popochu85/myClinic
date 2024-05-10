@@ -57,7 +57,7 @@
             this.btnDoctor.Location = new System.Drawing.Point(107, 195);
             this.btnDoctor.Name = "btnDoctor";
             this.btnDoctor.Size = new System.Drawing.Size(169, 59);
-            this.btnDoctor.TabIndex = 67;
+            this.btnDoctor.TabIndex = 2;
             this.btnDoctor.Text = "看診系統";
             this.btnDoctor.UseVisualStyleBackColor = false;
             this.btnDoctor.Click += new System.EventHandler(this.btnDoctor_Click);
@@ -70,7 +70,7 @@
             this.btnNurse.Location = new System.Drawing.Point(107, 121);
             this.btnNurse.Name = "btnNurse";
             this.btnNurse.Size = new System.Drawing.Size(169, 59);
-            this.btnNurse.TabIndex = 68;
+            this.btnNurse.TabIndex = 1;
             this.btnNurse.Text = "掛號系統";
             this.btnNurse.UseVisualStyleBackColor = false;
             this.btnNurse.Click += new System.EventHandler(this.btnNurse_Click);
@@ -83,7 +83,7 @@
             this.btnMed.Location = new System.Drawing.Point(107, 354);
             this.btnMed.Name = "btnMed";
             this.btnMed.Size = new System.Drawing.Size(169, 59);
-            this.btnMed.TabIndex = 69;
+            this.btnMed.TabIndex = 4;
             this.btnMed.Text = "藥物維護";
             this.btnMed.UseVisualStyleBackColor = false;
             this.btnMed.Click += new System.EventHandler(this.btnMed_Click);
@@ -96,7 +96,7 @@
             this.btnEmp.Location = new System.Drawing.Point(107, 272);
             this.btnEmp.Name = "btnEmp";
             this.btnEmp.Size = new System.Drawing.Size(169, 59);
-            this.btnEmp.TabIndex = 70;
+            this.btnEmp.TabIndex = 3;
             this.btnEmp.Text = "員工維護";
             this.btnEmp.UseVisualStyleBackColor = false;
             this.btnEmp.Click += new System.EventHandler(this.btnEmp_Click);
@@ -109,7 +109,7 @@
             this.btnLogout.Location = new System.Drawing.Point(107, 432);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Size = new System.Drawing.Size(169, 59);
-            this.btnLogout.TabIndex = 71;
+            this.btnLogout.TabIndex = 5;
             this.btnLogout.Text = "登出";
             this.btnLogout.UseVisualStyleBackColor = false;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
