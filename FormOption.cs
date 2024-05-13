@@ -31,6 +31,8 @@ namespace myClinic
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+
+            GlobalSettings.employee = null;
             this.Close();
         }
 

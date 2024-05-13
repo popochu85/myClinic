@@ -54,16 +54,7 @@ namespace myClinic.Model
         /// 備註
         /// </summary>
         public string patientOther { get; set; }
-        /// <summary>
-        /// 掛號順序
-        /// </summary>
-        public string regId { get; set; }
-        /// <summary>
-        /// 病歷存檔檔案號碼
-        /// </summary>
-        public string caseHistoryId { get; set; }
         #endregion
-
 
         #region 方法
         /// <summary>
@@ -115,6 +106,7 @@ namespace myClinic.Model
 
             return patients;
         }
+
 
         public bool insertPat(Patient pat)
         {
@@ -209,12 +201,6 @@ namespace myClinic.Model
             }
 
             return patients;
-        } 
-
-        public bool regPat(Patient pat)
-        {
-            bool result = false;
-            return result;
         }
 
         #endregion

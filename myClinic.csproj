@@ -87,10 +87,12 @@
     </Compile>
     <Compile Include="Model\AuthGroup.cs" />
     <Compile Include="Model\CaseHistory.cs" />
+    <Compile Include="Model\DTO\PatientRegDTO.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\GlobalSettings.cs" />
     <Compile Include="Model\Medicine.cs" />
     <Compile Include="Model\Patient.cs" />
+    <Compile Include="Model\PatientReg.cs" />
     <Compile Include="Model\SQLConnectMaster.cs" />
     <Compile Include="myClinicDataSet.Designer.cs">
       <AutoGen>True</AutoGen>

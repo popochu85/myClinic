@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Lifetime;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using myClinic.Controller;
 using myClinic.Model;
+using myClinic.Model.DTO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace myClinic
 {
@@ -48,6 +52,7 @@ namespace myClinic
             dgvPatient.Columns["patientOther"].Visible = false;
             dgvPatient.Columns["createdDate"].Visible = false;
 
+            dgvReg.Columns.Add("regId", "順序");
             dgvReg.Columns.Add("patientId", "病歷號碼");
             dgvReg.Columns.Add("patientName", "姓名");
             dgvReg.Columns.Add("gender", "性別");
@@ -58,28 +63,51 @@ namespace myClinic
             dgvReg.Columns.Add("patientPhone", "電話");
             dgvReg.Columns.Add("patientOther", "備註");
             dgvReg.Columns.Add("createdDate", "初診日");
-            dgvReg.Columns["disease"].Visible = false;
+            dgvReg.Columns["patientId"].Visible = false;
+            dgvReg.Columns["allergy"].Visible = false;
             dgvReg.Columns["disease"].Visible = false;
             dgvReg.Columns["patientAddress"].Visible = false;
-            dgvReg.Columns["disease"].Visible = false;
-            dgvReg.Columns["allergy"].Visible = false;
+            dgvReg.Columns["patientPhone"].Visible = false;
             dgvReg.Columns["patientOther"].Visible = false;
             dgvReg.Columns["createdDate"].Visible = false;
+
+
 
             searchAllPat();
         }
         private void FormNurse_Load(object sender, EventArgs e)
         {
+
+            upateRegNum();
+        }
+        private void upateRegNum()
+        {
+            txtRegId.Clear();
+            PatientController patientController = new PatientController();
+            string today = DateTime.Now.ToString("yyyy-MM-dd");
+            Console.WriteLine(today);
+            string regIdResult = "";
+            int regID = patientController.getMaxRegID(today, out regIdResult);
+            if (regIdResult.Equals(""))
+            {
+                txtRegId.Text = (1 + regID ).ToString();
+            }
         }
         private void searchAllPat()
         {
             // 清空DataGridView的資料
             dgvPatient.Rows.Clear();
             List<Patient> patients = new List<Patient>();
+            List<PatientRegDTO> regs = new List<PatientRegDTO>();
             PatientController patientController = new PatientController();
             // 取得員工資料
             patients = patientController.getPatients();
             renderDgv(patients);
+            string keyDate = DateTime.Now.ToString("yyyy-MM-dd");// 這個畫面預設查詢今天
+            regs = patientController.getPatientsReg(keyDate);//OK?看了OK但偶不知道為啥 好複雜餒 迷思荒項
+            // 第一個是MODEL，CONTROLLER 這些地方皆漏了一個可以透過日期條件查詢資料的功能 MODEL寫查詢
+            // CONTROLLER 直接操作他的查詢功能 就醬子 賀 偶消化一夏 saysay QQQQQ
+            renderDgvReg(regs);
         }
         /// <summary>
         /// 搜尋後DGV呈現資料
@@ -93,7 +121,17 @@ namespace myClinic
             foreach (Patient pat in patients)
             {
 
-                dgvPatient.Rows.Add(pat.patientId, pat.patientName, pat.getGender(), pat.patientBirth, pat.allergy, pat.disease, pat.patientAddress, pat.patientPhone, pat.patientOther, pat.createdDate);
+                dgvPatient.Rows.Add( pat.patientId, pat.patientName, pat.getGender(), pat.patientBirth, pat.allergy, pat.disease, pat.patientAddress, pat.patientPhone, pat.patientOther, pat.createdDate);
+            }
+        }
+        private void renderDgvReg(List<PatientRegDTO> regs)
+        {
+            // 清空DataGridView的資料
+            dgvReg.Rows.Clear();
+            // 將資料加入到DataGridView
+            foreach (PatientRegDTO reg in regs)
+            {
+                dgvReg.Rows.Add(reg.patientReg.regId, reg.patientReg.patientId, reg.patient.patientName, reg.patient.getGender(), reg.patient.patientBirth, reg.patient.allergy, reg.patient.disease, reg.patient.patientAddress, reg.patient.patientPhone, reg.patient.patientOther, reg.patient.createdDate);
             }
         }
         private void clearTxt()
@@ -101,7 +139,7 @@ namespace myClinic
             txtPatID.Clear();
             txtName.Clear();
             txtAllergy.Clear();
-            txtDisease.Clear(); 
+            txtDisease.Clear();
             txtOther.Clear();
             txtPhone.Clear();
             txtAddress.Clear();
@@ -110,15 +148,16 @@ namespace myClinic
         {
             Close();
         }
-
         private void dgvPatient_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            
             if (e.RowIndex >= 0)
             {
+                btnReg.Enabled = true;
+
+                upateRegNum();
                 txtPatID.Text = dgvPatient.Rows[e.RowIndex].Cells["patientId"].Value.ToString();
                 txtName.Text = dgvPatient.Rows[e.RowIndex].Cells["patientName"].Value.ToString();
-
                 if ((dgvPatient.Rows[e.RowIndex].Cells["gender"].Value.ToString().Equals("男")))
                 {
                     radioButtonB.Checked = true;
@@ -139,7 +178,7 @@ namespace myClinic
             }
         }
 
-       
+
 
         private void checkStatus()
         {
@@ -173,6 +212,7 @@ namespace myClinic
                 //    dgvPatient.Enabled = false;
                 //    dgvReg.Enabled = false;
                 //    panelSave.Visible = true;
+                //    btnReg.Enabled = true;
                 //    break;
 
                 case "Default":
@@ -250,15 +290,9 @@ namespace myClinic
         private void btnReg_Click(object sender, EventArgs e)
         {
 
-            if (txtPatID.Text.Equals(""))
-            {
-                MessageBox.Show("請選擇一筆資料!");
-                return;
-            }
-
+            
+            upateRegNum();
             //要把資料存到[myClinic].[dbo].[PatientReg]
-
-
             PatientController patientController = new PatientController();
             if (txtPatID.Text.Equals(""))
             {
@@ -267,20 +301,25 @@ namespace myClinic
             }
             else
             {
-                Patient pat = getBindingPat();
-                DialogResult result = MessageBox.Show($"確認病人{pat.patientName}掛號?", "確認掛號", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                PatientReg reg = getBindingReg();
+                Patient patient = getBindingPat();
+                DialogResult result = MessageBox.Show($"確認病人{patient.patientName}掛號?", "確認掛號", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
                 // 根據使用者的選擇執行相應的動作
                 if (result == DialogResult.OK)
                 {
-                    if (patientController.regPat(pat))
+                    string msg = patientController.regPat(reg);
+                    if (msg == "")
                     {
                         MessageBox.Show("掛號成功!");
+                        tabControlP.SelectedTab = tabPageReg;
                     }
                     else
                     {
-                        MessageBox.Show("掛號失敗。");
+                        MessageBox.Show("掛號失敗。:"+ msg);
                     }
+
+                    searchAllPat();
                 }
                 else
                 {
@@ -292,7 +331,7 @@ namespace myClinic
 
 
         }
- 
+
 
 
         /// <summary>
@@ -302,18 +341,29 @@ namespace myClinic
         private Patient getBindingPat()
         {
 
-            Patient pat=new Patient();
+            Patient pat = new Patient();
             pat.patientId = txtPatID.Text;
-            pat.patientName= txtName.Text;
+            pat.patientName = txtName.Text;
             pat.gender = (radioButtonB.Checked) ? "B" : "G";
             pat.patientBirth = dateTimePickerBirth.Value.ToString("yyyy-MM-dd");
-            pat.allergy=txtAllergy.Text;
-            pat.disease=txtDisease.Text;
-            pat.patientAddress=txtAddress.Text;
-            pat.patientPhone=txtPhone.Text;
-            pat.patientOther=txtOther.Text;
-            pat.createdDate=dateTimePickerFirst.Value.ToString("yyyy-MM-dd");
+            pat.allergy = txtAllergy.Text;
+            pat.disease = txtDisease.Text;
+            pat.patientAddress = txtAddress.Text;
+            pat.patientPhone = txtPhone.Text;
+            pat.patientOther = txtOther.Text;
+            pat.createdDate = dateTimePickerFirst.Value.ToString("yyyy-MM-dd");
             return pat;
+        }
+        private PatientReg getBindingReg()
+        {
+
+            PatientReg reg = new PatientReg();
+            reg.patientId = txtPatID.Text;
+            Int32.TryParse(txtRegId.Text, out int regId);
+            reg.regId = regId;
+            reg.regDate = DateTime.Now;
+            reg.caseHistoryId = "";
+            return reg;
         }
         private void btnCreate_Click(object sender, EventArgs e)
         {
@@ -387,8 +437,10 @@ namespace myClinic
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
+
+            upateRegNum();
             PatientController patientController = new PatientController();
-            renderDgv(patientController.GetPatients(txtPatID.Text, txtName.Text,txtPhone.Text,txtAddress.Text));
+            renderDgv(patientController.GetPatients(txtPatID.Text, txtName.Text, txtPhone.Text, txtAddress.Text));
             if (dgvPatient.RowCount == 0)
             {
                 MessageBox.Show("查無此人!!");
@@ -398,6 +450,85 @@ namespace myClinic
         private void btnClearTxt_Click(object sender, EventArgs e)
         {
             clearTxt();
+        }
+
+        private void dgvReg_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            if (e.RowIndex >= 0)
+            {
+
+                btnReg.Enabled = false;
+                txtRegId.Text = dgvReg.Rows[e.RowIndex].Cells["RegId"].Value.ToString();
+                txtPatID.Text = dgvReg.Rows[e.RowIndex].Cells["patientId"].Value.ToString();
+                txtName.Text = dgvReg.Rows[e.RowIndex].Cells["patientName"].Value.ToString();
+
+                if ((dgvReg.Rows[e.RowIndex].Cells["gender"].Value.ToString().Equals("男")))
+                {
+                    radioButtonB.Checked = true;
+                }
+                else
+                {
+                    radioButtonG.Checked = true;
+                }
+                dateTimePickerBirth.Text = dgvReg.Rows[e.RowIndex].Cells["patientBirth"].Value.ToString();
+
+                txtAllergy.Text = dgvReg.Rows[e.RowIndex].Cells["allergy"].Value.ToString();
+                txtDisease.Text = dgvReg.Rows[e.RowIndex].Cells["disease"].Value.ToString();
+                txtAddress.Text = dgvReg.Rows[e.RowIndex].Cells["patientAddress"].Value.ToString();
+                txtPhone.Text = dgvReg.Rows[e.RowIndex].Cells["patientPhone"].Value.ToString();
+                txtOther.Text = dgvReg.Rows[e.RowIndex].Cells["patientOther"].Value.ToString();
+                dateTimePickerFirst.Text = dgvReg.Rows[e.RowIndex].Cells["createdDate"].Value.ToString();
+
+            }
+        }
+
+        private void btnCancelReg_Click(object sender, EventArgs e)
+        {
+            PatientController pc=new PatientController();
+            PatientReg reg = getBindingReg();
+            if (dgvReg.SelectedRows.Count > 0)
+            {
+                // 取得第一個選中的行
+                DataGridViewRow selectedRow = dgvReg.SelectedRows[0];
+
+                // 取得指定欄位的值
+                string name = selectedRow.Cells["patientName"].Value.ToString();
+
+                // 在這裡使用取得的值進行後續處理
+
+                DialogResult result = MessageBox.Show($"確認取消{name}掛號?", "確認掛號", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                // 根據使用者的選擇執行相應的動作
+                if (result == DialogResult.OK)
+                {
+                    if (reg != null)
+                    {
+                        if (reg.regId != 0 && reg.regDate != null)
+                        {
+                            string msg = pc.cancelReg(reg);
+                            if (msg.Equals(""))
+                            {
+                                MessageBox.Show("取消掛號成功");
+                                searchAllPat();
+                            }
+                            else
+                            {
+                                MessageBox.Show("取消掛號失敗:" + msg);
+                            }
+
+
+                        }
+                    }
+
+                    searchAllPat();
+                }
+                else
+                {
+                    // 使用者選擇了取消，不執行刪除動作
+                }
+            }
         }
     }
 }

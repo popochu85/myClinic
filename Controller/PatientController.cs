@@ -2,24 +2,36 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using myClinic.Model;
+using myClinic.Model.DTO;
 
 namespace myClinic.Controller
 {
     internal class PatientController
     {
         public Patient patient { get; set; }
+        public PatientReg patientReg { get; set; }
+        public PatientRegDTO dto { get; set; }
         public PatientController()
         {
             this.patient = new Patient();
+            this.dto = new PatientRegDTO();
+            this.patientReg = new PatientReg();
         }
 
         public List<Patient> getPatients()
         {
             
             return patient.getPatients();
+        }
+
+        public List<PatientRegDTO> getPatientsReg(string keyDate)
+        {
+
+            return dto.getPatientsReg(keyDate);
         }
         public string insertPat(Patient pat)
         {
@@ -127,7 +139,7 @@ namespace myClinic.Controller
             }
             if (!patientAddress.Equals(""))
             {
-                pairs.Add("patientId", patientAddress);
+                pairs.Add("patientAddress", patientAddress);
             }
             return patient.GetPatients(pairs);
         }
@@ -136,10 +148,42 @@ namespace myClinic.Controller
         /// </summary>
         /// <param name="pat"></param>
         /// <returns></returns>
-        public bool regPat(Patient pat)
+        public string regPat(PatientReg reg)
         {
-            bool result=false;
-            return result;
+            
+
+            string msg = "";
+            try
+            {
+                if (reg.regId.Equals(""))
+                {
+                    return "掛號序號請勿為空!!";
+                }
+
+                if (reg.patientId.Equals(""))
+                {
+                    return "病人編號請勿為空!!";
+                }
+
+
+                reg.regPat(reg);
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+            }
+            return msg;
+        }
+
+        public string cancelReg(PatientReg reg)
+        {
+            return reg.cancelReg(reg);
+        }
+
+        public int getMaxRegID(string today, out string msg) { 
+   
+                return patientReg.getMaxRegID(today, out msg);
+            
         }
     }
 

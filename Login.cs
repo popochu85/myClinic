@@ -26,7 +26,7 @@ namespace myClinic
 
             if (emp != null)
             {
-                MessageBox.Show($"成功了, 你是[{emp.empName}], 性別[{emp.getGender()}] " +
+                MessageBox.Show($"登入成功, 您是[{emp.empName}], 性別[{emp.getGender()}] " +
                     $"職級[{emp.position}], 權限代碼[{emp.groupId}]");
                 // 登入成功
                 GlobalSettings.employee = emp;
@@ -36,7 +36,7 @@ namespace myClinic
             }
             else
             {
-                MessageBox.Show("登入失敗! 垃圾!");
+                MessageBox.Show("登入失敗!");
                 // 登入失敗
                 GlobalSettings.employee = null;
             }
