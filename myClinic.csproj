@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\CaseHistoryController.cs" />
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
     <Compile Include="Controller\PatientController.cs" />

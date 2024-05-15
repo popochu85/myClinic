@@ -52,9 +52,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.tabPagePat = new System.Windows.Forms.TabPage();
+            this.lblRegId = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.txtRegId = new System.Windows.Forms.TextBox();
             this.btnListAllPat = new System.Windows.Forms.Button();
             this.dgvPatient = new System.Windows.Forms.DataGridView();
+            this.btnReg = new System.Windows.Forms.Button();
             this.tabPageReg = new System.Windows.Forms.TabPage();
             this.btnCancelReg = new System.Windows.Forms.Button();
             this.dgvReg = new System.Windows.Forms.DataGridView();
@@ -66,10 +69,7 @@
             this.panelSave = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnReg = new System.Windows.Forms.Button();
             this.btnClearTxt = new System.Windows.Forms.Button();
-            this.txtRegId = new System.Windows.Forms.TextBox();
-            this.lblRegId = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.tabPagePat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPatient)).BeginInit();
@@ -302,7 +302,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 25);
             this.label1.TabIndex = 13;
-            this.label1.Text = "病例號碼";
+            this.label1.Text = "病人編號";
             // 
             // btnUpdate
             // 
@@ -334,6 +334,17 @@
             this.tabPagePat.Text = "病人列表";
             this.tabPagePat.UseVisualStyleBackColor = true;
             // 
+            // lblRegId
+            // 
+            this.lblRegId.AutoSize = true;
+            this.lblRegId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblRegId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblRegId.Location = new System.Drawing.Point(262, 41);
+            this.lblRegId.Name = "lblRegId";
+            this.lblRegId.Size = new System.Drawing.Size(92, 25);
+            this.lblRegId.TabIndex = 93;
+            this.lblRegId.Text = "掛號號碼";
+            // 
             // btnSearch
             // 
             this.btnSearch.BackColor = System.Drawing.Color.Gray;
@@ -346,6 +357,16 @@
             this.btnSearch.Text = "搜尋";
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtRegId
+            // 
+            this.txtRegId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtRegId.Location = new System.Drawing.Point(276, 69);
+            this.txtRegId.Name = "txtRegId";
+            this.txtRegId.ReadOnly = true;
+            this.txtRegId.Size = new System.Drawing.Size(68, 34);
+            this.txtRegId.TabIndex = 92;
+            this.txtRegId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btnListAllPat
             // 
@@ -373,6 +394,20 @@
             this.dgvPatient.Size = new System.Drawing.Size(238, 395);
             this.dgvPatient.TabIndex = 1;
             this.dgvPatient.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPatient_CellClick);
+            // 
+            // btnReg
+            // 
+            this.btnReg.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.btnReg.Enabled = false;
+            this.btnReg.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnReg.ForeColor = System.Drawing.Color.Khaki;
+            this.btnReg.Location = new System.Drawing.Point(268, 110);
+            this.btnReg.Name = "btnReg";
+            this.btnReg.Size = new System.Drawing.Size(86, 39);
+            this.btnReg.TabIndex = 90;
+            this.btnReg.Text = "掛號";
+            this.btnReg.UseVisualStyleBackColor = false;
+            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
             // 
             // tabPageReg
             // 
@@ -505,20 +540,6 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // btnReg
-            // 
-            this.btnReg.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.btnReg.Enabled = false;
-            this.btnReg.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnReg.ForeColor = System.Drawing.Color.Khaki;
-            this.btnReg.Location = new System.Drawing.Point(268, 110);
-            this.btnReg.Name = "btnReg";
-            this.btnReg.Size = new System.Drawing.Size(86, 39);
-            this.btnReg.TabIndex = 90;
-            this.btnReg.Text = "掛號";
-            this.btnReg.UseVisualStyleBackColor = false;
-            this.btnReg.Click += new System.EventHandler(this.btnReg_Click);
-            // 
             // btnClearTxt
             // 
             this.btnClearTxt.BackColor = System.Drawing.Color.DarkSlateGray;
@@ -531,27 +552,6 @@
             this.btnClearTxt.Text = "清空欄位";
             this.btnClearTxt.UseVisualStyleBackColor = false;
             this.btnClearTxt.Click += new System.EventHandler(this.btnClearTxt_Click);
-            // 
-            // txtRegId
-            // 
-            this.txtRegId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.txtRegId.Location = new System.Drawing.Point(276, 69);
-            this.txtRegId.Name = "txtRegId";
-            this.txtRegId.ReadOnly = true;
-            this.txtRegId.Size = new System.Drawing.Size(68, 34);
-            this.txtRegId.TabIndex = 92;
-            this.txtRegId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // lblRegId
-            // 
-            this.lblRegId.AutoSize = true;
-            this.lblRegId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.lblRegId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblRegId.Location = new System.Drawing.Point(262, 41);
-            this.lblRegId.Name = "lblRegId";
-            this.lblRegId.Size = new System.Drawing.Size(92, 25);
-            this.lblRegId.TabIndex = 93;
-            this.lblRegId.Text = "掛號號碼";
             // 
             // FormNurse
             // 

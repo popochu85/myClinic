@@ -17,8 +17,7 @@ namespace myClinic.Model.DTO
             SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
             List<PatientRegDTO> patientRegDTOs = new List<PatientRegDTO>();
             string query = "SELECT P.*, R.*  from [myClinic].[dbo].[Patients] as P join [myClinic].[dbo].[PatientReg] as R on p.patientId=r.patientId" +
-                $" WHERE R.regDate ='{keyDate}'"; // 輸入日期查詢
-            // 寫參數矩陣查詢???這樣ㄇ
+                $" WHERE R.regDate ='{keyDate}'and caseHistoryId=''"; // 輸入日期查詢
             // 使用 SQLConnect 來執行查詢並且取得結果
             using (DataTable DT = sqlConnect.ExecuteDataTable(query))
             {

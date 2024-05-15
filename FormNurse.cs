@@ -34,7 +34,7 @@ namespace myClinic
             dgvReg.AutoGenerateColumns = false;
 
             // 添加DataGridView的欄位
-            dgvPatient.Columns.Add("patientId", "病歷號碼");
+            dgvPatient.Columns.Add("patientId", "病人編號");
             dgvPatient.Columns.Add("patientName", "姓名");
             dgvPatient.Columns.Add("gender", "性別");
             dgvPatient.Columns.Add("patientBirth", "生日");
@@ -136,6 +136,9 @@ namespace myClinic
         }
         private void clearTxt()
         {
+            radioButtonB.Checked = true;
+            dateTimePickerBirth.Value =new DateTime(1990,01,01);
+            dateTimePickerFirst.Value=DateTime.Now;
             txtPatID.Clear();
             txtName.Clear();
             txtAllergy.Clear();
@@ -301,6 +304,28 @@ namespace myClinic
             }
             else
             {
+                if (dgvPatient.SelectedRows.Count > 0)
+                {
+                    string selectV1= dgvPatient.SelectedRows[0].Cells["patientName"].Value.ToString();
+                    string selectV2= dgvPatient.SelectedRows[0].Cells["patientPhone"].Value.ToString();
+                    string selectV3 = dgvPatient.SelectedRows[0].Cells["patientBirth"].Value.ToString();
+                    foreach (DataGridViewRow row in dgvReg.Rows)
+                    {
+                        // 取得 DataGridView2 中指定資料欄的值
+                        string V1 = row.Cells["patientName"].Value.ToString();
+                        string V2 = row.Cells["patientPhone"].Value.ToString();
+                        string V3 = row.Cells["patientBirth"].Value.ToString();
+                        // 檢查是否不相等
+                        if ((selectV1 == V1)&&(selectV2 == V2)&&(selectV3 == V3))
+                        {
+                            MessageBox.Show("請勿重複掛號!!");
+                            return;
+                            // 如果找到不相等的情況，執行你的後續處理
+                            // 這裡可以是你想要執行的程式碼
+                            // 例如顯示訊息、更新資料、呼叫其他方法等
+                        }
+                    }
+                }
                 PatientReg reg = getBindingReg();
                 Patient patient = getBindingPat();
                 DialogResult result = MessageBox.Show($"確認病人{patient.patientName}掛號?", "確認掛號", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
@@ -385,6 +410,7 @@ namespace myClinic
                 if (result.Equals(""))
                 {
                     MessageBox.Show("新增成功");
+                    tabControlP.SelectedTab = tabPagePat;
                 }
                 else
                 {

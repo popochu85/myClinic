@@ -33,16 +33,18 @@
             this.lblAllergy = new System.Windows.Forms.Label();
             this.lblDisease = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtCaseHxId = new System.Windows.Forms.TextBox();
             this.lblGender = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblBirth = new System.Windows.Forms.Label();
             this.lblOther = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCc = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lblDr = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDx = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.lblToday = new System.Windows.Forms.Label();
             this.btnBackToOption = new System.Windows.Forms.Button();
@@ -50,7 +52,7 @@
             this.btnAddMed = new System.Windows.Forms.Button();
             this.btnSearchMed = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtMed = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -59,13 +61,13 @@
             this.txtDose = new System.Windows.Forms.TextBox();
             this.comboBoxFreq = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.dgvRes = new System.Windows.Forms.DataGridView();
+            this.dgvReg = new System.Windows.Forms.DataGridView();
             this.dgvMedsOfPat = new System.Windows.Forms.DataGridView();
             this.dgvMed = new System.Windows.Forms.DataGridView();
             this.dgvPastHx = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReg)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedsOfPat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPastHx)).BeginInit();
@@ -77,12 +79,12 @@
             this.lblPatId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblPatId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblPatId.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblPatId.Location = new System.Drawing.Point(25, 28);
+            this.lblPatId.Location = new System.Drawing.Point(24, 66);
             this.lblPatId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPatId.Name = "lblPatId";
             this.lblPatId.Size = new System.Drawing.Size(92, 25);
             this.lblPatId.TabIndex = 16;
-            this.lblPatId.Text = "病例號碼";
+            this.lblPatId.Text = "病人編號";
             // 
             // lblName
             // 
@@ -90,7 +92,7 @@
             this.lblName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblName.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblName.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblName.Location = new System.Drawing.Point(25, 53);
+            this.lblName.Location = new System.Drawing.Point(24, 91);
             this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(52, 25);
@@ -103,7 +105,7 @@
             this.lblAllergy.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblAllergy.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblAllergy.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblAllergy.Location = new System.Drawing.Point(25, 128);
+            this.lblAllergy.Location = new System.Drawing.Point(24, 166);
             this.lblAllergy.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblAllergy.Name = "lblAllergy";
             this.lblAllergy.Size = new System.Drawing.Size(72, 25);
@@ -116,7 +118,7 @@
             this.lblDisease.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblDisease.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblDisease.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblDisease.Location = new System.Drawing.Point(25, 153);
+            this.lblDisease.Location = new System.Drawing.Point(24, 191);
             this.lblDisease.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDisease.Name = "lblDisease";
             this.lblDisease.Size = new System.Drawing.Size(72, 25);
@@ -125,7 +127,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtCaseHxId);
             this.groupBox1.Controls.Add(this.lblGender);
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblBirth);
             this.groupBox1.Controls.Add(this.lblOther);
             this.groupBox1.Controls.Add(this.lblPatId);
@@ -137,10 +141,20 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox1.Size = new System.Drawing.Size(250, 239);
+            this.groupBox1.Size = new System.Drawing.Size(250, 254);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "病人資料";
+            // 
+            // txtCaseHxId
+            // 
+            this.txtCaseHxId.Enabled = false;
+            this.txtCaseHxId.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtCaseHxId.Location = new System.Drawing.Point(92, 34);
+            this.txtCaseHxId.Name = "txtCaseHxId";
+            this.txtCaseHxId.Size = new System.Drawing.Size(113, 34);
+            this.txtCaseHxId.TabIndex = 97;
+            this.txtCaseHxId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblGender
             // 
@@ -148,11 +162,23 @@
             this.lblGender.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblGender.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblGender.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblGender.Location = new System.Drawing.Point(25, 78);
+            this.lblGender.Location = new System.Drawing.Point(24, 116);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(52, 25);
             this.lblGender.TabIndex = 45;
             this.lblGender.Text = "性別";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.label1.Font = new System.Drawing.Font("微軟正黑體", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.Location = new System.Drawing.Point(24, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 28);
+            this.label1.TabIndex = 98;
+            this.label1.Text = "病歷號碼";
             // 
             // lblBirth
             // 
@@ -160,7 +186,7 @@
             this.lblBirth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblBirth.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblBirth.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblBirth.Location = new System.Drawing.Point(25, 103);
+            this.lblBirth.Location = new System.Drawing.Point(24, 141);
             this.lblBirth.Name = "lblBirth";
             this.lblBirth.Size = new System.Drawing.Size(52, 25);
             this.lblBirth.TabIndex = 44;
@@ -172,7 +198,7 @@
             this.lblOther.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.lblOther.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblOther.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.lblOther.Location = new System.Drawing.Point(25, 178);
+            this.lblOther.Location = new System.Drawing.Point(24, 216);
             this.lblOther.Name = "lblOther";
             this.lblOther.Size = new System.Drawing.Size(52, 25);
             this.lblOther.TabIndex = 43;
@@ -180,9 +206,9 @@
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.Turquoise;
+            this.btnSave.BackColor = System.Drawing.Color.Honeydew;
             this.btnSave.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnSave.ForeColor = System.Drawing.Color.DimGray;
             this.btnSave.Location = new System.Drawing.Point(784, 591);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(114, 39);
@@ -190,15 +216,15 @@
             this.btnSave.Text = "儲存病歷";
             this.btnSave.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // txtCc
             // 
-            this.textBox1.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox1.Location = new System.Drawing.Point(303, 59);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(382, 114);
-            this.textBox1.TabIndex = 1;
+            this.txtCc.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtCc.Location = new System.Drawing.Point(303, 59);
+            this.txtCc.Multiline = true;
+            this.txtCc.Name = "txtCc";
+            this.txtCc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtCc.Size = new System.Drawing.Size(382, 114);
+            this.txtCc.TabIndex = 1;
             // 
             // label2
             // 
@@ -248,13 +274,13 @@
             this.label13.TabIndex = 57;
             this.label13.Text = "診斷";
             // 
-            // textBox3
+            // txtDx
             // 
-            this.textBox3.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox3.Location = new System.Drawing.Point(303, 226);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(214, 34);
-            this.textBox3.TabIndex = 2;
+            this.txtDx.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtDx.Location = new System.Drawing.Point(303, 226);
+            this.txtDx.Name = "txtDx";
+            this.txtDx.Size = new System.Drawing.Size(214, 34);
+            this.txtDx.TabIndex = 2;
             // 
             // label14
             // 
@@ -282,9 +308,9 @@
             // 
             // btnBackToOption
             // 
-            this.btnBackToOption.BackColor = System.Drawing.Color.Turquoise;
+            this.btnBackToOption.BackColor = System.Drawing.Color.Honeydew;
             this.btnBackToOption.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnBackToOption.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnBackToOption.ForeColor = System.Drawing.Color.DimGray;
             this.btnBackToOption.Location = new System.Drawing.Point(640, 591);
             this.btnBackToOption.Name = "btnBackToOption";
             this.btnBackToOption.Size = new System.Drawing.Size(114, 39);
@@ -306,21 +332,22 @@
             // 
             // btnAddMed
             // 
-            this.btnAddMed.BackColor = System.Drawing.Color.Turquoise;
+            this.btnAddMed.BackColor = System.Drawing.Color.Honeydew;
             this.btnAddMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnAddMed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnAddMed.ForeColor = System.Drawing.Color.DimGray;
             this.btnAddMed.Location = new System.Drawing.Point(429, 591);
             this.btnAddMed.Name = "btnAddMed";
             this.btnAddMed.Size = new System.Drawing.Size(157, 39);
             this.btnAddMed.TabIndex = 67;
             this.btnAddMed.Text = "新增選取藥物";
             this.btnAddMed.UseVisualStyleBackColor = false;
+            this.btnAddMed.Click += new System.EventHandler(this.btnAddMed_Click);
             // 
             // btnSearchMed
             // 
-            this.btnSearchMed.BackColor = System.Drawing.Color.Turquoise;
+            this.btnSearchMed.BackColor = System.Drawing.Color.Honeydew;
             this.btnSearchMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnSearchMed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnSearchMed.ForeColor = System.Drawing.Color.DimGray;
             this.btnSearchMed.Location = new System.Drawing.Point(462, 297);
             this.btnSearchMed.Name = "btnSearchMed";
             this.btnSearchMed.Size = new System.Drawing.Size(82, 39);
@@ -340,13 +367,13 @@
             this.label3.TabIndex = 64;
             this.label3.Text = "藥物清單";
             // 
-            // textBox2
+            // txtMed
             // 
-            this.textBox2.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.textBox2.Location = new System.Drawing.Point(303, 302);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 34);
-            this.textBox2.TabIndex = 63;
+            this.txtMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.txtMed.Location = new System.Drawing.Point(303, 302);
+            this.txtMed.Name = "txtMed";
+            this.txtMed.Size = new System.Drawing.Size(153, 34);
+            this.txtMed.TabIndex = 63;
             // 
             // pictureBox1
             // 
@@ -439,17 +466,20 @@
             this.label20.TabIndex = 87;
             this.label20.Text = "等待看診名單";
             // 
-            // dgvRes
+            // dgvReg
             // 
-            this.dgvRes.AllowUserToAddRows = false;
-            this.dgvRes.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvRes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRes.Location = new System.Drawing.Point(704, 43);
-            this.dgvRes.Name = "dgvRes";
-            this.dgvRes.RowHeadersWidth = 62;
-            this.dgvRes.RowTemplate.Height = 31;
-            this.dgvRes.Size = new System.Drawing.Size(203, 202);
-            this.dgvRes.TabIndex = 93;
+            this.dgvReg.AllowUserToAddRows = false;
+            this.dgvReg.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgvReg.BackgroundColor = System.Drawing.SystemColors.ControlLight;
+            this.dgvReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvReg.Location = new System.Drawing.Point(704, 43);
+            this.dgvReg.Name = "dgvReg";
+            this.dgvReg.RowHeadersWidth = 62;
+            this.dgvReg.RowTemplate.Height = 31;
+            this.dgvReg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvReg.Size = new System.Drawing.Size(203, 202);
+            this.dgvReg.TabIndex = 93;
+            this.dgvReg.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvReg_CellClick);
             // 
             // dgvMedsOfPat
             // 
@@ -460,6 +490,7 @@
             this.dgvMedsOfPat.Name = "dgvMedsOfPat";
             this.dgvMedsOfPat.RowHeadersWidth = 62;
             this.dgvMedsOfPat.RowTemplate.Height = 31;
+            this.dgvMedsOfPat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMedsOfPat.Size = new System.Drawing.Size(203, 235);
             this.dgvMedsOfPat.TabIndex = 94;
             // 
@@ -472,6 +503,7 @@
             this.dgvMed.Name = "dgvMed";
             this.dgvMed.RowHeadersWidth = 62;
             this.dgvMed.RowTemplate.Height = 31;
+            this.dgvMed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMed.Size = new System.Drawing.Size(190, 195);
             this.dgvMed.TabIndex = 95;
             // 
@@ -484,6 +516,7 @@
             this.dgvPastHx.Name = "dgvPastHx";
             this.dgvPastHx.RowHeadersWidth = 62;
             this.dgvPastHx.RowTemplate.Height = 31;
+            this.dgvPastHx.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPastHx.Size = new System.Drawing.Size(199, 195);
             this.dgvPastHx.TabIndex = 96;
             // 
@@ -496,7 +529,7 @@
             this.Controls.Add(this.dgvPastHx);
             this.Controls.Add(this.dgvMed);
             this.Controls.Add(this.dgvMedsOfPat);
-            this.Controls.Add(this.dgvRes);
+            this.Controls.Add(this.dgvReg);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.comboBoxFreq);
             this.Controls.Add(this.txtDose);
@@ -509,19 +542,20 @@
             this.Controls.Add(this.btnAddMed);
             this.Controls.Add(this.btnSearchMed);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMed);
             this.Controls.Add(this.btnBackToOption);
             this.Controls.Add(this.lblToday);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtDx);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.lblDr);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCc);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("微軟正黑體", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ForeColor = System.Drawing.Color.DimGray;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormDoctor";
             this.Text = "看診系統";
@@ -529,7 +563,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvReg)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMedsOfPat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMed)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPastHx)).EndInit();
@@ -545,14 +579,14 @@
         private System.Windows.Forms.Label lblDisease;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCc;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblBirth;
         private System.Windows.Forms.Label lblGender;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label lblDr;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDx;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblToday;
         private System.Windows.Forms.Button btnBackToOption;
@@ -560,7 +594,7 @@
         private System.Windows.Forms.Button btnAddMed;
         private System.Windows.Forms.Button btnSearchMed;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtMed;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
@@ -569,10 +603,12 @@
         private System.Windows.Forms.TextBox txtDose;
         private System.Windows.Forms.ComboBox comboBoxFreq;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.DataGridView dgvRes;
+        private System.Windows.Forms.DataGridView dgvReg;
         private System.Windows.Forms.DataGridView dgvMedsOfPat;
         private System.Windows.Forms.DataGridView dgvMed;
         private System.Windows.Forms.DataGridView dgvPastHx;
         private System.Windows.Forms.Label lblOther;
+        private System.Windows.Forms.TextBox txtCaseHxId;
+        private System.Windows.Forms.Label label1;
     }
 }

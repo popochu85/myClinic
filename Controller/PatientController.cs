@@ -155,6 +155,7 @@ namespace myClinic.Controller
             string msg = "";
             try
             {
+                
                 if (reg.regId.Equals(""))
                 {
                     return "掛號序號請勿為空!!";
