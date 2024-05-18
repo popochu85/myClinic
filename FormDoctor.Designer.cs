@@ -65,6 +65,7 @@
             this.dgvMedsOfPat = new System.Windows.Forms.DataGridView();
             this.dgvMed = new System.Windows.Forms.DataGridView();
             this.dgvPastHx = new System.Windows.Forms.DataGridView();
+            this.btnDeleteMed = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReg)).BeginInit();
@@ -215,6 +216,7 @@
             this.btnSave.TabIndex = 3;
             this.btnSave.Text = "儲存病歷";
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtCc
             // 
@@ -311,12 +313,13 @@
             this.btnBackToOption.BackColor = System.Drawing.Color.Honeydew;
             this.btnBackToOption.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnBackToOption.ForeColor = System.Drawing.Color.DimGray;
-            this.btnBackToOption.Location = new System.Drawing.Point(640, 591);
+            this.btnBackToOption.Location = new System.Drawing.Point(664, 591);
             this.btnBackToOption.Name = "btnBackToOption";
             this.btnBackToOption.Size = new System.Drawing.Size(114, 39);
             this.btnBackToOption.TabIndex = 62;
             this.btnBackToOption.Text = "返回選單";
             this.btnBackToOption.UseVisualStyleBackColor = false;
+            this.btnBackToOption.Click += new System.EventHandler(this.btnBackToOption_Click);
             // 
             // label7
             // 
@@ -335,11 +338,11 @@
             this.btnAddMed.BackColor = System.Drawing.Color.Honeydew;
             this.btnAddMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnAddMed.ForeColor = System.Drawing.Color.DimGray;
-            this.btnAddMed.Location = new System.Drawing.Point(429, 591);
+            this.btnAddMed.Location = new System.Drawing.Point(447, 591);
             this.btnAddMed.Name = "btnAddMed";
-            this.btnAddMed.Size = new System.Drawing.Size(157, 39);
+            this.btnAddMed.Size = new System.Drawing.Size(115, 39);
             this.btnAddMed.TabIndex = 67;
-            this.btnAddMed.Text = "新增選取藥物";
+            this.btnAddMed.Text = "新增藥物";
             this.btnAddMed.UseVisualStyleBackColor = false;
             this.btnAddMed.Click += new System.EventHandler(this.btnAddMed_Click);
             // 
@@ -348,12 +351,13 @@
             this.btnSearchMed.BackColor = System.Drawing.Color.Honeydew;
             this.btnSearchMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.btnSearchMed.ForeColor = System.Drawing.Color.DimGray;
-            this.btnSearchMed.Location = new System.Drawing.Point(462, 297);
+            this.btnSearchMed.Location = new System.Drawing.Point(477, 302);
             this.btnSearchMed.Name = "btnSearchMed";
-            this.btnSearchMed.Size = new System.Drawing.Size(82, 39);
+            this.btnSearchMed.Size = new System.Drawing.Size(55, 25);
             this.btnSearchMed.TabIndex = 65;
             this.btnSearchMed.Text = "搜尋";
             this.btnSearchMed.UseVisualStyleBackColor = false;
+            this.btnSearchMed.Click += new System.EventHandler(this.btnSearchMed_Click);
             // 
             // label3
             // 
@@ -441,6 +445,7 @@
             // 
             // comboBoxFreq
             // 
+            this.comboBoxFreq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFreq.FormattingEnabled = true;
             this.comboBoxFreq.Items.AddRange(new object[] {
             "一天1次",
@@ -474,6 +479,7 @@
             this.dgvReg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvReg.Location = new System.Drawing.Point(704, 43);
             this.dgvReg.Name = "dgvReg";
+            this.dgvReg.ReadOnly = true;
             this.dgvReg.RowHeadersWidth = 62;
             this.dgvReg.RowTemplate.Height = 31;
             this.dgvReg.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -488,10 +494,11 @@
             this.dgvMedsOfPat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMedsOfPat.Location = new System.Drawing.Point(619, 329);
             this.dgvMedsOfPat.Name = "dgvMedsOfPat";
+            this.dgvMedsOfPat.ReadOnly = true;
             this.dgvMedsOfPat.RowHeadersWidth = 62;
             this.dgvMedsOfPat.RowTemplate.Height = 31;
             this.dgvMedsOfPat.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMedsOfPat.Size = new System.Drawing.Size(203, 235);
+            this.dgvMedsOfPat.Size = new System.Drawing.Size(213, 223);
             this.dgvMedsOfPat.TabIndex = 94;
             // 
             // dgvMed
@@ -501,11 +508,13 @@
             this.dgvMed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMed.Location = new System.Drawing.Point(303, 342);
             this.dgvMed.Name = "dgvMed";
+            this.dgvMed.ReadOnly = true;
             this.dgvMed.RowHeadersWidth = 62;
             this.dgvMed.RowTemplate.Height = 31;
             this.dgvMed.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMed.Size = new System.Drawing.Size(190, 195);
             this.dgvMed.TabIndex = 95;
+            this.dgvMed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvMed_CellClick);
             // 
             // dgvPastHx
             // 
@@ -514,11 +523,24 @@
             this.dgvPastHx.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPastHx.Location = new System.Drawing.Point(33, 369);
             this.dgvPastHx.Name = "dgvPastHx";
+            this.dgvPastHx.ReadOnly = true;
             this.dgvPastHx.RowHeadersWidth = 62;
             this.dgvPastHx.RowTemplate.Height = 31;
             this.dgvPastHx.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPastHx.Size = new System.Drawing.Size(199, 195);
             this.dgvPastHx.TabIndex = 96;
+            // 
+            // btnDeleteMed
+            // 
+            this.btnDeleteMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.btnDeleteMed.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.btnDeleteMed.ForeColor = System.Drawing.Color.DimGray;
+            this.btnDeleteMed.Location = new System.Drawing.Point(731, 297);
+            this.btnDeleteMed.Name = "btnDeleteMed";
+            this.btnDeleteMed.Size = new System.Drawing.Size(84, 26);
+            this.btnDeleteMed.TabIndex = 97;
+            this.btnDeleteMed.Text = "刪除藥物";
+            this.btnDeleteMed.UseVisualStyleBackColor = false;
             // 
             // FormDoctor
             // 
@@ -526,6 +548,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(910, 655);
+            this.Controls.Add(this.btnDeleteMed);
             this.Controls.Add(this.dgvPastHx);
             this.Controls.Add(this.dgvMed);
             this.Controls.Add(this.dgvMedsOfPat);
@@ -610,5 +633,6 @@
         private System.Windows.Forms.Label lblOther;
         private System.Windows.Forms.TextBox txtCaseHxId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDeleteMed;
     }
 }

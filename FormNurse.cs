@@ -104,9 +104,7 @@ namespace myClinic
             patients = patientController.getPatients();
             renderDgv(patients);
             string keyDate = DateTime.Now.ToString("yyyy-MM-dd");// 這個畫面預設查詢今天
-            regs = patientController.getPatientsReg(keyDate);//OK?看了OK但偶不知道為啥 好複雜餒 迷思荒項
-            // 第一個是MODEL，CONTROLLER 這些地方皆漏了一個可以透過日期條件查詢資料的功能 MODEL寫查詢
-            // CONTROLLER 直接操作他的查詢功能 就醬子 賀 偶消化一夏 saysay QQQQQ
+            regs = patientController.getPatientsReg(keyDate);
             renderDgvReg(regs);
         }
         /// <summary>

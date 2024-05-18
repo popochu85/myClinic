@@ -51,7 +51,24 @@ namespace myClinic.Controller
             }
             return medicine.GetMedicines(pairs);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="medId"></param>
+        /// <param name="medName"></param>
+        /// <param name="medEf"></param>
+        /// <param name="medSe"></param>
+        /// <returns></returns>
+        public List<Medicine> GetMedicines(string medName)
+        {
+            Dictionary<string, string> pairs = new Dictionary<string, string>();
+            
+            if (!medName.Equals(""))
+            {
+                pairs.Add("medName", medName);
+            }
+            return medicine.GetMedicines(pairs);
+        }
         /// <summary>
         /// 新增藥物
         /// </summary>

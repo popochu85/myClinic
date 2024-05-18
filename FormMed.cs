@@ -27,7 +27,7 @@ namespace myClinic
 
 
             // 添加DataGridView的欄位
-            dataGridViewMeds.Columns.Add("MedId", "藥品編號");
+            dataGridViewMeds.Columns.Add("MedId", "編號");
             dataGridViewMeds.Columns.Add("MedName", "藥品名稱");
             dataGridViewMeds.Columns.Add("MedEf", "作用");
             dataGridViewMeds.Columns.Add("MedSe", "副作用");

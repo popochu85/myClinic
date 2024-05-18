@@ -278,9 +278,11 @@
             // dataGridViewMeds
             // 
             this.dataGridViewMeds.AllowUserToAddRows = false;
+            this.dataGridViewMeds.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dataGridViewMeds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMeds.Location = new System.Drawing.Point(530, 148);
             this.dataGridViewMeds.Name = "dataGridViewMeds";
+            this.dataGridViewMeds.ReadOnly = true;
             this.dataGridViewMeds.RowHeadersWidth = 62;
             this.dataGridViewMeds.RowTemplate.Height = 31;
             this.dataGridViewMeds.Size = new System.Drawing.Size(240, 318);
