@@ -4,12 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using myClinic.Model;
+using myClinic.Model.DTO;
 
 namespace myClinic.Controller
 {
-    internal class CaseHistoryController
+    public class CaseHistoryController
     {
+        MedOfPtDTO dto=new MedOfPtDTO();
         CaseHistory caseHistory=new CaseHistory();
+        public List<MedOfPtDTO> getPtMeds(string caseHxId)
+        {
+            return dto.getPtMeds(caseHxId);
+        }
+
         public string addNewHx(CaseHistory Hx)
         {
 
@@ -45,7 +52,10 @@ namespace myClinic.Controller
             return result;
         }
 
-
+        public List<CaseHistory> searchOldCaseHistory(string ptId)
+        {
+            return caseHistory.searchOldCaseHistory(ptId);
+        }
 
 
     }

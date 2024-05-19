@@ -100,7 +100,7 @@ namespace myClinic
             List<Patient> patients = new List<Patient>();
             List<PatientRegDTO> regs = new List<PatientRegDTO>();
             PatientController patientController = new PatientController();
-            // 取得員工資料
+            
             patients = patientController.getPatients();
             renderDgv(patients);
             string keyDate = DateTime.Now.ToString("yyyy-MM-dd");// 這個畫面預設查詢今天

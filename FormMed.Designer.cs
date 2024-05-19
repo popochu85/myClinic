@@ -45,8 +45,6 @@
             this.btnBackOption = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.lblEmp = new System.Windows.Forms.Label();
             this.dataGridViewMeds = new System.Windows.Forms.DataGridView();
             this.btnSave = new System.Windows.Forms.Button();
@@ -54,7 +52,6 @@
             this.panelSave = new System.Windows.Forms.Panel();
             this.btnClearTxt = new System.Windows.Forms.Button();
             this.btnListAllMed = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeds)).BeginInit();
             this.panelSave.SuspendLayout();
             this.SuspendLayout();
@@ -244,25 +241,6 @@
             this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(322, 76);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(123, 101);
-            this.pictureBox1.TabIndex = 76;
-            this.pictureBox1.TabStop = false;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微軟正黑體", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label7.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label7.Location = new System.Drawing.Point(317, 48);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(92, 25);
-            this.label7.TabIndex = 77;
-            this.label7.Text = "藥物圖片";
-            // 
             // lblEmp
             // 
             this.lblEmp.AutoSize = true;
@@ -362,8 +340,6 @@
             this.Controls.Add(this.panelSave);
             this.Controls.Add(this.dataGridViewMeds);
             this.Controls.Add(this.lblEmp);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btnBackOption);
@@ -387,7 +363,6 @@
             this.Name = "FormMed";
             this.Text = "藥物維護系統";
             this.Load += new System.EventHandler(this.FormMed_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMeds)).EndInit();
             this.panelSave.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -414,8 +389,6 @@
         private System.Windows.Forms.Button btnBackOption;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnSearch;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblEmp;
         private System.Windows.Forms.DataGridView dataGridViewMeds;
         private System.Windows.Forms.Button btnSave;

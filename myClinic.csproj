@@ -50,6 +50,12 @@
     <Compile Include="Controller\EmployeeController.cs" />
     <Compile Include="Controller\MedicineController.cs" />
     <Compile Include="Controller\PatientController.cs" />
+    <Compile Include="FormCaseHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCaseHistory.Designer.cs">
+      <DependentUpon>FormCaseHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormNurse.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,7 @@
     </Compile>
     <Compile Include="Model\AuthGroup.cs" />
     <Compile Include="Model\CaseHistory.cs" />
+    <Compile Include="Model\DTO\MedOfPtDTO.cs" />
     <Compile Include="Model\DTO\PatientRegDTO.cs" />
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\GlobalSettings.cs" />
@@ -102,6 +109,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormCaseHistory.resx">
+      <DependentUpon>FormCaseHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormNurse.resx">
       <DependentUpon>FormNurse.cs</DependentUpon>
     </EmbeddedResource>

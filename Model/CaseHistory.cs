@@ -9,7 +9,7 @@ using myClinic.Model.DTO;
 
 namespace myClinic.Model
 {
-    internal class CaseHistory
+    public class CaseHistory
     {
         #region 屬性
         //病歷
@@ -64,7 +64,7 @@ namespace myClinic.Model
 
 
         #region 方法
-       public bool addMed(CaseHistory caseHx)
+        public bool addMed(CaseHistory caseHx)
         {
             bool result = false; // 預設回傳
             SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線
@@ -103,16 +103,51 @@ namespace myClinic.Model
             parameters.Add(new SqlParameter("@dx", caseHx.dx));
             parameters.Add(new SqlParameter("@cc", caseHx.cc));
             parameters.Add(new SqlParameter("@empNo", caseHx.empNo));
-            parameters.Add(new SqlParameter("@dxDate", caseHx.dxDate)); 
+            parameters.Add(new SqlParameter("@dxDate", caseHx.dxDate));
+
+            //更新REG 病歷號碼
+            string query2 = $"update PatientReg set caseHistoryId = @caseHistoryId where regDate =@regDate and patientId = @patientId";
+            List<SqlParameter> parameters2 = new List<SqlParameter>();
+            parameters2.Add(new SqlParameter("caseHistoryId", caseHx.caseHistoryId));
+            parameters2.Add(new SqlParameter("regDate", caseHx.dxDate));
+            parameters2.Add(new SqlParameter("patientId", caseHx.patientId));
 
             // 使用 SQLConnect 來執行查詢並且取得結果
-            if (sqlConnect.ExecuteQuery(query1, parameters))
+            if (sqlConnect.ExecuteQuery(query1, parameters) && sqlConnect.ExecuteQuery(query2, parameters2))
             {
                 result = true;
             }
 
             return result;
         }
+        public List<CaseHistory> searchOldCaseHistory(string ptId)
+        {
+
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
+            List<CaseHistory> oldCaseHx = new List<CaseHistory>();
+            string query = $"select * from CaseHistory　where patientId='{ptId}' and dxDate!='{DateTime.Now.ToString("yyyy-MM-dd")}'";
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            using (DataTable DT = sqlConnect.ExecuteDataTable(query))
+            {
+                foreach (DataRow row in DT.Rows)
+                {
+
+                    CaseHistory caseHistory = new CaseHistory
+                    {
+                        caseHistoryId = row["caseHistoryId"].ToString(),
+                        patientId = row["patientId"].ToString(),
+                        dxDate = row["dxDate"].ToString(),
+                        dx = row["dx"].ToString(),
+                        cc = row["cc"].ToString(),
+                    };
+
+                    oldCaseHx.Add(caseHistory);
+                }
+            }
+
+            return oldCaseHx;
+        }
+
 
         #endregion
     }

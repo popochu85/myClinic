@@ -11,6 +11,7 @@ namespace myClinic.Model.DTO
     {
         public Patient patient;
         public PatientReg patientReg;
+        public CaseHistory caseHistory;
 
         public List<PatientRegDTO> getPatientsReg(string keyDate)
         {
@@ -49,9 +50,66 @@ namespace myClinic.Model.DTO
                     PatientRegDTO patientRegDTO = new PatientRegDTO
                     {
                         patient = patient,
-                        patientReg = patientReg,
+                        patientReg = patientReg
 
                     };
+
+                    patientRegDTOs.Add(patientRegDTO);
+                }
+            }
+
+            return patientRegDTOs;
+        }
+
+        public List<PatientRegDTO> getPatientsOk(string keyDate)
+        {
+            SQLConnectMaster sqlConnect = new SQLConnectMaster();// 不傳遞, 使用預設全域變數的連線字串
+            List<PatientRegDTO> patientRegDTOs = new List<PatientRegDTO>();
+            string query = "SELECT *  from Patients　as p full join PatientReg as r on p.patientId=r.patientId join caseHistory as c on c.caseHistoryId=r.caseHistoryId " +
+                $" WHERE R.regDate ='{keyDate}'and r.caseHistoryId!=''"; // 輸入日期查詢
+            // 使用 SQLConnect 來執行查詢並且取得結果
+            using (DataTable DT = sqlConnect.ExecuteDataTable(query))
+            {
+                foreach (DataRow row in DT.Rows)
+                {
+                    string patientId = row["patientId"].ToString();
+                    int regId = Convert.ToInt32(row["regId"]);
+                    PatientReg patientReg = new PatientReg
+                    {
+                        regId = Convert.ToInt32(row["regId"]),
+                        regDate = DateTime.Parse(row["regDate"].ToString()),
+                        patientId = row["patientId"].ToString(),
+                        caseHistoryId = row["caseHistoryId"].ToString(),
+                    };
+
+                    Patient patient = new Patient
+                    {
+                        patientId = row["patientId"].ToString(),
+                        patientBirth = row["patientBirth"].ToString(),
+                        gender = row["gender"].ToString(),
+                        patientName = row["patientName"].ToString(),
+                        patientPhone = row["patientPhone"].ToString(),
+                        patientAddress = row["patientAddress"].ToString(),
+                        allergy = row["allergy"].ToString(),
+                        disease = row["disease"].ToString(),
+                        patientOther = row["patientOther"].ToString(),
+                        createdDate = row["createdDate"].ToString()
+                    };
+                    CaseHistory caseHistory = new CaseHistory
+                    {
+
+                        caseHistoryId = row["caseHistoryId"].ToString(),
+                        cc= row["cc"].ToString(),
+                        dx=row["dx"].ToString(),
+                        
+                    };
+                    PatientRegDTO patientRegDTO = new PatientRegDTO
+                    {
+                        patient = patient,
+                        patientReg = patientReg,
+                        caseHistory = caseHistory
+                    };
+                    
 
                     patientRegDTOs.Add(patientRegDTO);
                 }
