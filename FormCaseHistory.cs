@@ -53,7 +53,10 @@ namespace myClinic
         {
            
             lblName.Text = $"姓名:{_dto.patient.patientName}";
-            lblBirth.Text = $"生日:{_dto.patient.patientBirth}";
+            DateTime s;
+            DateTime.TryParse(_dto.patient.patientBirth, out s);
+            
+            lblBirth.Text = $"生日:{s.ToString("yyyy-MM-dd")}";
             lblAllergy.Text=$"過敏史:{_dto.patient.allergy}";
             lblPatId.Text=$"病人編號:{_dto.patient.patientId}";
             lblGender.Text= $"性別:{_dto.patient.getGender()}";

@@ -21,6 +21,27 @@ namespace myClinic
         private void FormOption_Load(object sender, EventArgs e)
         {
             lblEmp.Text = $"操作人員：{GlobalSettings.employee.empName}";
+            if (GlobalSettings.employee.groupId == "01")
+            {//01系統管理員 02護理師 03醫師
+                btnDoctor.Enabled = true;
+                btnMed.Enabled = true;
+                btnNurse.Enabled = true;
+                btnEmp.Enabled = true;
+            }
+            else if (GlobalSettings.employee.groupId == "02")
+                {//01系統管理員 02護理師 03醫師
+                    btnDoctor.Enabled = false;
+                    btnMed.Enabled = true;
+                    btnNurse.Enabled = true;
+                    btnEmp.Enabled = true;
+                }
+            else if (GlobalSettings.employee.groupId == "03")
+            {//01系統管理員 02護理師 03醫師
+                btnDoctor.Enabled = true;
+                btnMed.Enabled = true;
+                btnNurse.Enabled = false;
+                btnEmp.Enabled = true;
+            }
         }
 
 
